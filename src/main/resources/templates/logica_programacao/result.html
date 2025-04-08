@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultados - Calculadora de Salários</title>
+</head>
+<body>
+<h1>Resultados</h1>
+<div th:if="${#lists.isEmpty(salaries)}">
+    <p>Nenhum salário encontrado.</p>
+</div>
+<div th:unless="${#lists.isEmpty(salaries)}">
+    <table border="1" cellspacing="0" cellpadding="5">
+        <tr>
+            <th>#</th>
+            <th>Salário Bruto</th>
+            <th>INSS (%)</th>
+            <th>Desconto INSS</th>
+            <th>IR (%)</th>
+            <th>Desconto IR</th>
+            <th>Salário Líquido</th>
+        </tr>
+        <tr th:each="salary, iterStat : ${salaries}">
+            <td th:text="${iterStat.count}"></td>
+            <td th:text="${salary.salarioBruto}"></td>
+            <td th:text="${T(tech.ada.projeto_ada.logica_programacao.util.TabelaDescontosInss).obterDescontoPercentual(salary.salarioBruto)}"></td>
+            <td th:text="${salary.descontoInss}"></td>
+            <td th:text="${T(tech.ada.projeto_ada.logica_programacao.util.TabelaDescontosImpostoDeRenda).obterDescontoPercentual(salary.salarioBruto)}"></td>
+            <td th:text="${salary.descontoImpostoDeRenda}"></td>
+            <td th:text="${salary.salarioLiquido}"></td>
+        </tr>
+    </table>
+</div>
+<br/>
+<form action="/salario" method="get">
+    <button type="submit">Voltar</button>
+</form>
+</body>
+</html>
