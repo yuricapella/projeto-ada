@@ -1,7 +1,7 @@
-package tech.ada.projeto_ada.repository;
+package tech.ada.projeto_ada.usuario.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import tech.ada.projeto_ada.model.Usuario;
+import tech.ada.projeto_ada.usuario.model.Usuario;
 
 public interface UsuariosRepository extends JpaRepository<Usuario, Long> {
 

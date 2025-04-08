@@ -1,4 +1,4 @@
-package tech.ada.projeto_ada.model;
+package tech.ada.projeto_ada.usuario.model;
 
 import jakarta.persistence.*;
 

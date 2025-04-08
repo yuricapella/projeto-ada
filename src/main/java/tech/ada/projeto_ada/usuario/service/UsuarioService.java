@@ -1,8 +1,8 @@
-package tech.ada.projeto_ada.service;
+package tech.ada.projeto_ada.usuario.service;
 
 import org.springframework.stereotype.Service;
-import tech.ada.projeto_ada.model.Usuario;
-import tech.ada.projeto_ada.repository.UsuariosRepository;
+import tech.ada.projeto_ada.usuario.model.Usuario;
+import tech.ada.projeto_ada.usuario.repository.UsuariosRepository;
 
 import java.util.List;
 import java.util.Optional;

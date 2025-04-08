@@ -1,9 +1,9 @@
-package tech.ada.projeto_ada.controller;
+package tech.ada.projeto_ada.usuario.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import tech.ada.projeto_ada.model.Usuario;
-import tech.ada.projeto_ada.service.UsuarioService;
+import tech.ada.projeto_ada.usuario.model.Usuario;
+import tech.ada.projeto_ada.usuario.service.UsuarioService;
 
 import java.util.List;
 import java.util.Optional;
