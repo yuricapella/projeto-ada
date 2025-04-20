@@ -1,28 +1,58 @@
 package tech.ada.projeto_ada.usuario.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+import tech.ada.projeto_ada.usuario.util.FormataData;
 
-@Entity
-@Table(name = "USUARIO")
+import java.time.LocalDateTime;
 
-public class Usuario {
+    @Entity
+    @Table(name = "USUARIO")
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    private String nome;
-    private String email;
-    private String senha;
-    private int idade;
+    public class Usuario {
 
-    public Usuario() {}
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Long id;
+        @Column(nullable = false)
+        private String nome;
+        @Column(unique = true, nullable = false)
+        private String email;
+        private String senha;
+        private int idade;
 
-    public Usuario(Long id, String nome, String email, String senha, int idade) {
-        this.id = id;
-        this.nome = nome;
-        this.email = email;
-        this.senha = senha;
-        this.idade = idade;
+        @JsonFormat(pattern = FormataData.PADRAO_DATA_HORA)
+        private LocalDateTime dataCriacao;
+        @JsonFormat(pattern = FormataData.PADRAO_DATA_HORA)
+        private LocalDateTime dataAtualizacao;
+
+        public Usuario() {
+            this.dataCriacao = LocalDateTime.now();
+        }
+
+        public Usuario(Long id, String nome, String email, String senha, int idade, LocalDateTime dataCriacao) {
+            this.id = id;
+            this.nome = nome;
+            this.email = email;
+            this.senha = senha;
+            this.idade = idade;
+            this.dataCriacao = dataCriacao;
+        }
+
+    public LocalDateTime getDataCriacao() {
+        return dataCriacao;
+    }
+
+    public void setDataCriacao(LocalDateTime dataCriacao) {
+        this.dataCriacao = dataCriacao;
+    }
+
+    public LocalDateTime getDataAtualizacao() {
+        return dataAtualizacao;
+    }
+
+    public void setDataAtualizacao(LocalDateTime dataAtualizacao) {
+        this.dataAtualizacao = dataAtualizacao;
     }
 
     public Long getId() {
