@@ -21,9 +21,9 @@ import java.time.LocalDateTime;
         private String senha;
         private int idade;
 
-        @JsonFormat(pattern = FormataData.FORMATO)
+        @JsonFormat(pattern = FormataData.PADRAO_DATA_HORA)
         private LocalDateTime dataCriacao;
-        @JsonFormat(pattern = FormataData.FORMATO)
+        @JsonFormat(pattern = FormataData.PADRAO_DATA_HORA)
         private LocalDateTime dataAtualizacao;
 
         public Usuario() {
