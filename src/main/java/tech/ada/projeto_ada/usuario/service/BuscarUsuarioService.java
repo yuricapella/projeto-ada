@@ -1,6 +1,7 @@
 package tech.ada.projeto_ada.usuario.service;
 
 import org.springframework.stereotype.Service;
+import tech.ada.projeto_ada.exception.UsuarioNaoEncontradoException;
 import tech.ada.projeto_ada.usuario.dto.UsuarioDTO;
 import tech.ada.projeto_ada.usuario.dto.mapper.UsuarioMapper;
 import tech.ada.projeto_ada.usuario.model.Usuario;
@@ -29,7 +30,7 @@ public class BuscarUsuarioService {
     public Usuario buscarUsuarioPorId(Long id) {
         Optional<Usuario> usuarioOptional = repository.findById(id);
         return usuarioOptional
-                .orElseThrow(() -> new RuntimeException("Usuário com ID" + id + " não encontrado"));
+                .orElseThrow(() -> new UsuarioNaoEncontradoException("Usuário com ID " + id + " não encontrado"));
     }
 
 
