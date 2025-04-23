@@ -19,7 +19,6 @@ import java.time.LocalDateTime;
         @Column(unique = true, nullable = false)
         private String email;
         private String senha;
-        private int idade;
 
         @JsonFormat(pattern = FormataData.PADRAO_DATA_HORA)
         private LocalDateTime dataCriacao;
@@ -30,12 +29,17 @@ import java.time.LocalDateTime;
             this.dataCriacao = LocalDateTime.now();
         }
 
-        public Usuario(Long id, String nome, String email, String senha, int idade, LocalDateTime dataCriacao) {
-            this.id = id;
+        public Usuario(String nome, String email, String senha) {
             this.nome = nome;
             this.email = email;
             this.senha = senha;
-            this.idade = idade;
+            this.dataCriacao = LocalDateTime.now();
+        }
+
+        public Usuario(String nome, String email, String senha, LocalDateTime dataCriacao) {
+            this.nome = nome;
+            this.email = email;
+            this.senha = senha;
             this.dataCriacao = dataCriacao;
         }
 
@@ -85,13 +89,5 @@ import java.time.LocalDateTime;
 
     public void setSenha(String senha) {
         this.senha = senha;
-    }
-
-    public int getIdade() {
-        return idade;
-    }
-
-    public void setIdade(int idade) {
-        this.idade = idade;
     }
 }

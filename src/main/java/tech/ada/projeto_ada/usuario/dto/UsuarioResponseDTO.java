@@ -1,13 +1,13 @@
 package tech.ada.projeto_ada.usuario.dto;
 
-public class UsuarioDTO {
+public class UsuarioResponseDTO {
     private String nome;
     private String email;
 
-    public UsuarioDTO() {
+    public UsuarioResponseDTO() {
     }
 
-    public UsuarioDTO(String nome, String email) {
+    public UsuarioResponseDTO(String nome, String email) {
         this.nome = nome;
         this.email = email;
     }

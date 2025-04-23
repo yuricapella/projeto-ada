@@ -15,18 +15,13 @@ public class CriarUsuarioRequestDTO {
     @Size(min = 8, message = "Senha deve conter no mínimo 8 dígitos.")
     private String senha;
 
-    @NotNull(message = "Idade não pode ser nula.")
-    @Positive(message = "Idade não pode ser 0 ou negativa.")
-    private int idade;
-
     public CriarUsuarioRequestDTO() {
     }
 
-    public CriarUsuarioRequestDTO(String nome, String email, String senha, int idade) {
+    public CriarUsuarioRequestDTO(String nome, String email, String senha) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
-        this.idade = idade;
     }
 
     public String getNome() {
@@ -51,13 +46,5 @@ public class CriarUsuarioRequestDTO {
 
     public void setSenha(String senha) {
         this.senha = senha;
-    }
-
-    public int getIdade() {
-        return idade;
-    }
-
-    public void setIdade(int idade) {
-        this.idade = idade;
     }
 }
