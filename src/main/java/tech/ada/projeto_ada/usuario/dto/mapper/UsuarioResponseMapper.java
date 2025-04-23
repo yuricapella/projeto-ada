@@ -9,7 +9,6 @@ public class UsuarioMapper {
         UsuarioDTO usuarioDTO = new UsuarioDTO();
         usuarioDTO.setNome(usuario.getNome());
         usuarioDTO.setEmail(usuario.getEmail());
-        usuarioDTO.setIdade(usuario.getIdade());
         return usuarioDTO;
     }
 
