@@ -1,14 +1,38 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="~{fragments/header :: head(pageTitle='Calculadora de Imposto de Renda')}">
     <meta charset="UTF-8">
-    <title>Calculadora de Salários</title>
+    <title>Calculadora de Imposto de Renda</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<h1>Calculadora de Salários</h1>
-<form action="/calculate" method="post">
-    <label for="salaries">Digite os salários brutos (separados por espaço ou vírgula):</label><br/>
-    <input type="text" id="salaries" name="salaries" required /><br/><br/>
-    <button type="submit">Calcular</button>
-</form>
+    <div class="container">
+        <div th:replace="~{fragments/navigation :: mainNav}"></div>
+
+        <header th:replace="~{fragments/header :: header(pageTitle='Calculadora de Imposto de Renda')}"></header>
+
+        <div th:replace="~{fragments/navigation :: logicaNav}"></div>
+
+        <main>
+            <section class="welcome">
+                <h2>Calculadora de Imposto de Renda</h2>
+                <p>Calcule o imposto de renda sobre salários com base nas alíquotas atuais.</p>
+            </section>
+
+            <div class="form-container">
+                <form action="/calculate" method="post">
+                    <div class="form-group">
+                        <label for="salaries">Digite os salários brutos (separados por espaço ou vírgula):</label>
+                        <input type="text" id="salaries" name="salaries" required />
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn">Calcular</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+
+        <div th:replace="~{fragments/footer :: footer}"></div>
+    </div>
 </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<nav th:fragment="mainNav" class="main-nav">
+    <div class="container">
+        <ul>
+            <li sec:authorize="isAnonymous()">
+                <a th:href="@{/login}">Login</a>
+            </li>
+
+            <li sec:authorize="isAuthenticated()">
+                <a th:href="@{/home}">Home</a>
+            </li>
+            <li sec:authorize="isAuthenticated()">
+                <a th:href="@{/logica-programacao}">Calculadora de Imposto</a>
+            </li>
+            <li sec:authorize="isAuthenticated()">
+                <a th:href="@{/poo1}">Sistema de Locação</a>
+            </li>
+            <li sec:authorize="isAuthenticated()">
+                <a href="#" class="nav-link-button" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sair</a>
+                <form id="logout-form" th:action="@{/logout}" method="post" style="display:none;">
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                </form>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<nav th:fragment="poo1Nav" class="sub-nav" sec:authorize="isAuthenticated()">
+    <div class="container">
+        <ul>
+            <li><a th:href="@{/poo1}">Início</a></li>
+            <li><a th:href="@{/poo1/veiculos/comuns}">Veículos Comuns</a></li>
+            <li><a th:href="@{/poo1/veiculos/luxo}">Veículos de Luxo</a></li>
+            <li><a th:href="@{/poo1/locacoes}">Veículos Alugados</a></li>
+            <li><a th:href="@{/poo1/clientes}">Clientes</a></li>
+        </ul>
+    </div>
+</nav>
+
+<nav th:fragment="logicaNav" class="sub-nav" sec:authorize="isAuthenticated()">
+    <div class="container">
+        <ul>
+            <li><a th:href="@{/logica-programacao}">Início</a></li>
+            <li><a th:href="@{/salario}">Calcular Imposto</a></li>
+        </ul>
+    </div>
+</nav>
+</body>
+</html>

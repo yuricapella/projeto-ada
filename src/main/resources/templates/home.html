@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head(pageTitle='Sistema Projeto Ada - Home')}">
+    <meta charset="UTF-8">
+    <title>Sistema Projeto Ada - Home</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header th:replace="~{fragments/header :: header(pageTitle='Sistema Projeto Ada')}"></header>
+
+        <div th:replace="~{fragments/navigation :: mainNav}"></div>
+
+        <main>
+            <section class="welcome">
+                <h2>Bem-vindo ao Sistema Projeto Ada</h2>
+                <p>Escolha um dos projetos abaixo para começar:</p>
+            </section>
+
+            <section class="projects">
+                <div class="project-card">
+                    <h3>Calculadora de Imposto de Renda</h3>
+                    <p>Calcule o imposto de renda sobre salários com base nas alíquotas atuais.</p>
+                    <a th:href="@{/logica-programacao}" class="btn">Acessar</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>Sistema de Locação de Veículos</h3>
+                    <p>Gerencie o aluguel de veículos comuns e de luxo para clientes.</p>
+                    <a th:href="@{/poo1}" class="btn">Acessar</a>
+                </div>
+
+            </section>
+        </main>
+
+        <div th:replace="~{fragments/footer :: footer}"></div>
+    </div>
+</body>
+</html>

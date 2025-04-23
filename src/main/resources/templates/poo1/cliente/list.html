@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Clientes</title>
+    <link rel="stylesheet" th:href="@{/css/poo1/style.css}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Lista de Clientes</h1>
+        </header>
+        
+        <nav>
+            <ul>
+                <li><a th:href="@{/poo1}">Início</a></li>
+                <li><a th:href="@{/poo1/veiculos/comuns}">Veículos Comuns</a></li>
+                <li><a th:href="@{/poo1/veiculos/luxo}">Veículos de Luxo</a></li>
+                <li><a th:href="@{/poo1/locacoes}">Veículos Alugados</a></li>
+            </ul>
+        </nav>
+        
+        <main>
+            <div th:if="${#lists.isEmpty(clientes)}">
+                <p>Nenhum cliente cadastrado.</p>
+            </div>
+            
+            <div th:unless="${#lists.isEmpty(clientes)}">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Documento</th>
+                            <th>Tipo</th>
+                            <th>Endereço</th>
+                            <th>Telefone</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="cliente : ${clientes}">
+                            <td th:text="${cliente.idCliente}">1</td>
+                            <td th:text="${cliente.nome}">Nome do Cliente</td>
+                            <td th:text="${cliente.documento}">Documento</td>
+                            <td th:text="${cliente.tipoCliente}">Tipo</td>
+                            <td th:text="${cliente.endereco}">Endereço</td>
+                            <td th:text="${cliente.telefone}">Telefone</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 Sistema de Locação de Veículos - Projeto ADA</p>
+        </footer>
+    </div>
+</body>
+</html>
