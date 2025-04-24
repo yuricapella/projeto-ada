@@ -1,7 +1,7 @@
 # Guia de Uso
 
 <a id="voltar-ao-topo"></a>  
-[🔝 Voltar ao topo](#voltar-ao-topo)
+[⬅ Voltar ao README](README.md)
 
 ## 📬 1. Acesso à Collection do Postman
 
