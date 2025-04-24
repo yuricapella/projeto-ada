@@ -4,6 +4,7 @@
 ├── .mvn
     └── wrapper
     │   └── maven-wrapper.properties
+├── ESTRUTURA.md
 ├── mvnw
 ├── mvnw.cmd
 ├── pom.xml
@@ -35,6 +36,8 @@
         │   │               └── util
         │   │               │   ├── TabelaDescontosImpostoDeRenda.java
         │   │               │   └── TabelaDescontosInss.java
+        │   │           ├── postman
+        │   │               └── projeto_ada.postman_collection.json
         │   │           ├── programacao_orientada_a_objetos_1
         │   │               ├── controller
         │   │               │   ├── ClienteController.java
