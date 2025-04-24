@@ -1,3 +1,5 @@
+<a id="voltar-ao-topo"></a>
+[⬅ Voltar ao README](README.md)
 # Diagramas das Classes Principais
 
 Este documento apresenta, em estilo UML ASCII, os diagramas das principais classes do Projeto Ada.
@@ -117,4 +119,4 @@ Este documento apresenta, em estilo UML ASCII, os diagramas das principais class
 ---
 
 *Esses diagramas resumem as principais classes, serviços, controllers e templates do projeto.*
-
+[🔝 Voltar ao topo](#voltar-ao-topo)
