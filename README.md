@@ -5,7 +5,7 @@ Este repositório contém o Projeto de Conclusão do módulo Programação web 2
 
 - uma **API REST** para CRUD de usuários  
 - uma **interface web** (Thymeleaf) para login, cadastro e navegação entre módulos didáticos  
-- esqueleto dos módulos de **Lógica de Programação** e **POO-1**  
+- esqueleto dos módulos de **Lógica de Programação 1** e **Programação Orientada A Objetos 1**  
 - **Swagger UI** e **Postman Collection** para teste de API  
 
 ---
