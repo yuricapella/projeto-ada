@@ -67,7 +67,5 @@ password: apipassword
 - Módulos de **Lógica de Programação** e **POO 1** estão presentes como páginas esqueléticas e serão integrados à API em breve.
 - Testes foram estruturados (Postman e mocks) mas ainda não possuem validações automatizadas.
 
-
-<a id="voltar-ao-topo"></a>  
 [🔝 Voltar ao topo](#voltar-ao-topo)
 
