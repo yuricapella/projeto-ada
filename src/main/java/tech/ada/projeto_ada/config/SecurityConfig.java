@@ -71,7 +71,9 @@ public class SecurityConfig {
                 )
                 .headers(headers -> headers.frameOptions().disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/login","/cadastro", "/usuarios/cadastro", "/css/**", "/js/**", "/h2/**").permitAll()
+                        .requestMatchers("/", "/login", "/cadastro", "/usuarios/cadastro",
+                                "/css/**", "/js/**", "/h2/**",
+                                "/swagger.html", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
