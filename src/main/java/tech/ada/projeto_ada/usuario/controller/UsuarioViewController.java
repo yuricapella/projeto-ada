@@ -30,7 +30,7 @@ public class UsuarioViewController {
             Usuario usuario = new Usuario(
                     usuarioDTO.getNome(),
                     usuarioDTO.getEmail(),
-                    passwordEncoder.encode(usuarioDTO.getSenha())
+                    usuarioDTO.getSenha()
             );
 
             criarUsuarioService.criarUsuario(usuario);
