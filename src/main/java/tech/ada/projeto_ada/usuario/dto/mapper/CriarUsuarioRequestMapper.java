@@ -10,7 +10,6 @@ public class CriarUsuarioRequestMapper {
         Usuario usuario = new Usuario();
         usuario.setNome(usuarioRequest.getNome());
         usuario.setEmail(usuarioRequest.getEmail());
-        usuario.setIdade(usuarioRequest.getIdade());
         usuario.setSenha(usuarioRequest.getSenha());
         return usuario;
     }
@@ -18,7 +17,6 @@ public class CriarUsuarioRequestMapper {
     public static void updateEntity(Usuario usuarioExistente, CriarUsuarioRequestDTO usuarioAtualizado) {
         usuarioExistente.setNome(usuarioAtualizado.getNome());
         usuarioExistente.setEmail(usuarioAtualizado.getEmail());
-        usuarioExistente.setIdade(usuarioAtualizado.getIdade());
         usuarioExistente.setSenha(usuarioAtualizado.getSenha());
         usuarioExistente.setDataAtualizacao(LocalDateTime.now());
     }

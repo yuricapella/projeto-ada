@@ -1,17 +1,15 @@
 package tech.ada.projeto_ada.usuario.dto;
 
-public class UsuarioDTO {
+public class UsuarioResponseDTO {
     private String nome;
     private String email;
-    private int idade;
 
-    public UsuarioDTO() {
+    public UsuarioResponseDTO() {
     }
 
-    public UsuarioDTO(String nome, String email, int idade) {
+    public UsuarioResponseDTO(String nome, String email) {
         this.nome = nome;
         this.email = email;
-        this.idade = idade;
     }
 
     public String getNome() {
@@ -28,13 +26,5 @@ public class UsuarioDTO {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public int getIdade() {
-        return idade;
-    }
-
-    public void setIdade(int idade) {
-        this.idade = idade;
     }
 }

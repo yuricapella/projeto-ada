@@ -2,10 +2,10 @@ package tech.ada.projeto_ada.usuario.service;
 
 import org.springframework.stereotype.Service;
 import tech.ada.projeto_ada.exception.UsuarioNaoEncontradoException;
-import tech.ada.projeto_ada.usuario.dto.UsuarioDTO;
-import tech.ada.projeto_ada.usuario.dto.mapper.UsuarioMapper;
+import tech.ada.projeto_ada.usuario.dto.UsuarioResponseDTO;
+import tech.ada.projeto_ada.usuario.dto.mapper.UsuarioResponseMapper;
 import tech.ada.projeto_ada.usuario.model.Usuario;
-import tech.ada.projeto_ada.usuario.repository.UsuariosRepository;
+import tech.ada.projeto_ada.usuario.repository.UsuarioRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,16 +14,16 @@ import java.util.stream.Collectors;
 @Service
 public class BuscarUsuarioService {
 
-    private final UsuariosRepository repository;
+    private final UsuarioRepository repository;
 
-    public BuscarUsuarioService(UsuariosRepository repository) {
+    public BuscarUsuarioService(UsuarioRepository repository) {
         this.repository = repository;
     }
 
-    public List<UsuarioDTO> buscarTodosUsuarios() {
+    public List<UsuarioResponseDTO> buscarTodosUsuarios() {
         return repository.findAll()
                 .stream()
-                .map(usuario -> UsuarioMapper.toUsuarioDTO(usuario))
+                .map(usuario -> UsuarioResponseMapper.toUsuarioDTO(usuario))
                 .collect(Collectors.toList());
     }
 

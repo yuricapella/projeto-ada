@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Veículos</title>
+    <link rel="stylesheet" th:href="@{/css/poo1/style.css}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Lista de Veículos</h1>
+        </header>
+        
+        <nav>
+            <ul>
+                <li><a th:href="@{/poo1}">Início</a></li>
+                <li><a th:href="@{/poo1/veiculos/comuns}">Veículos Comuns</a></li>
+                <li><a th:href="@{/poo1/veiculos/luxo}">Veículos de Luxo</a></li>
+                <li><a th:href="@{/poo1/locacoes}">Veículos Alugados</a></li>
+                <li><a th:href="@{/poo1/clientes}">Clientes</a></li>
+            </ul>
+        </nav>
+        
+        <main>
+            <div th:if="${#lists.isEmpty(veiculos)}">
+                <p>Nenhum veículo cadastrado.</p>
+            </div>
+            
+            <div th:unless="${#lists.isEmpty(veiculos)}">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Modelo</th>
+                            <th>Placa</th>
+                            <th>Tipo</th>
+                            <th>Valor Diária</th>
+                            <th>Disponível</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="veiculo : ${veiculos}">
+                            <td th:text="${veiculo.id}">1</td>
+                            <td th:text="${veiculo.modelo}">Modelo</td>
+                            <td th:text="${veiculo.placa}">Placa</td>
+                            <td th:text="${veiculo.tipo}">Tipo</td>
+                            <td th:text="${#numbers.formatDecimal(veiculo.valorDiaria, 1, 2)}">100.00</td>
+                            <td th:text="${veiculo.disponivel ? 'Sim' : 'Não'}">Sim</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 Sistema de Locação de Veículos - Projeto ADA</p>
+        </footer>
+    </div>
+</body>
+</html>

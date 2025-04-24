@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head(pageTitle='Sistema de Locação de Veículos')">
+    <meta charset="UTF-8">
+    <title>Sistema de Locação de Veículos</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div th:replace="fragments/navigation :: mainNav"></div>
+
+        <header th:replace="fragments/header :: header(pageTitle='Sistema de Locação de Veículos')"></header>
+
+        <div th:replace="fragments/navigation :: poo1Nav"></div>
+
+        <main>
+            <section class="welcome">
+                <h2>Bem-vindo ao Sistema de Locação de Veículos</h2>
+                <p>Selecione uma opção no menu acima para começar.</p>
+            </section>
+        </main>
+
+        <div th:replace="fragments/footer :: footer"></div>
+    </div>
+</body>
+</html>

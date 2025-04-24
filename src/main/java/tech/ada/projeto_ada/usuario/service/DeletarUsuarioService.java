@@ -1,14 +1,14 @@
 package tech.ada.projeto_ada.usuario.service;
 
 import org.springframework.stereotype.Service;
-import tech.ada.projeto_ada.usuario.repository.UsuariosRepository;
+import tech.ada.projeto_ada.usuario.repository.UsuarioRepository;
 
 @Service
 public class DeletarUsuarioService {
     private final BuscarUsuarioService buscarUsuarioService;
-    private final UsuariosRepository repository;
+    private final UsuarioRepository repository;
 
-    public DeletarUsuarioService(BuscarUsuarioService buscarUsuarioService, UsuariosRepository repository) {
+    public DeletarUsuarioService(BuscarUsuarioService buscarUsuarioService, UsuarioRepository repository) {
         this.buscarUsuarioService = buscarUsuarioService;
         this.repository = repository;
     }

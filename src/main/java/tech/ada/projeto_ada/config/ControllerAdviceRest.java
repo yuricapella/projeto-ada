@@ -4,6 +4,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -41,6 +42,18 @@ public class ControllerAdviceRest {
         return ResponseEntity
                 .status(HttpStatus.CONFLICT)
                 .body(erroPadrao);
+    }
+
+    @ExceptionHandler({BadCredentialsException.class})
+    public ResponseEntity<ErroPadrao> handleBadCredentials(BadCredentialsException ex) {
+        ErroPadrao erro = new ErroPadrao();
+        erro.setCodigoErro(ErroCodigo.CAMPO_INVALIDO.name());
+        erro.setDataHora(LocalDateTime.now());
+        erro.setMensagem("Email ou senha inválidos.");
+        erro.setErrors(null);
+        return ResponseEntity
+                .status(HttpStatus.UNAUTHORIZED)
+                .body(erro);
     }
 
     @ExceptionHandler({MethodArgumentNotValidException.class})

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="'Alugar Veículo ' + ${tipoVeiculo}">Alugar Veículo</title>
+    <link rel="stylesheet" th:href="@{/css/poo1/style.css}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 th:text="'Alugar Veículo ' + ${tipoVeiculo}">Alugar Veículo</h1>
+        </header>
+        
+        <nav>
+            <ul>
+                <li><a th:href="@{/poo1}">Início</a></li>
+                <li><a th:href="@{/poo1/veiculos/comuns}">Veículos Comuns</a></li>
+                <li><a th:href="@{/poo1/veiculos/luxo}">Veículos de Luxo</a></li>
+                <li><a th:href="@{/poo1/locacoes}">Veículos Alugados</a></li>
+                <li><a th:href="@{/poo1/clientes}">Clientes</a></li>
+            </ul>
+        </nav>
+        
+        <main>
+            <div th:if="${#lists.isEmpty(veiculos)}">
+                <p>Não há veículos disponíveis para locação no momento.</p>
+                <a th:href="@{/poo1}" class="btn">Voltar para o Início</a>
+            </div>
+            
+            <div th:unless="${#lists.isEmpty(veiculos)}">
+                <form th:action="@{/poo1/locacoes/alugar}" method="post">
+                    <div class="form-group">
+                        <label for="clienteId">Cliente:</label>
+                        <select id="clienteId" name="clienteId" required>
+                            <option value="">Selecione um cliente</option>
+                            <option th:each="cliente : ${clientes}" 
+                                    th:value="${cliente.idCliente}" 
+                                    th:text="${cliente.nome + ' - ' + cliente.documento}">
+                                Nome do Cliente - Documento
+                            </option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="veiculoPlaca">Veículo:</label>
+                        <select id="veiculoPlaca" name="veiculoPlaca" required>
+                            <option value="">Selecione um veículo</option>
+                            <option th:each="veiculo : ${veiculos}" 
+                                    th:value="${veiculo.placa}" 
+                                    th:text="${veiculo.modelo + ' - ' + veiculo.placa + ' - R$ ' + veiculo.valorDiaria + '/dia'}">
+                                Modelo - Placa - R$ 100.00/dia
+                            </option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="periodoLocacao">Período de Locação (dias):</label>
+                        <input type="number" id="periodoLocacao" name="periodoLocacao" min="1" value="30" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit" class="btn">Alugar Veículo</button>
+                        <a th:href="@{'/poo1/veiculos/' + ${tipoVeiculo == 'Comuns' ? 'comuns' : 'luxo'}}" class="btn">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 Sistema de Locação de Veículos - Projeto ADA</p>
+        </footer>
+    </div>
+</body>
+</html>

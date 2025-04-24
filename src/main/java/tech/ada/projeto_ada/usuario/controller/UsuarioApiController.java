@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tech.ada.projeto_ada.usuario.dto.CriarUsuarioRequestDTO;
-import tech.ada.projeto_ada.usuario.dto.UsuarioDTO;
+import tech.ada.projeto_ada.usuario.dto.UsuarioResponseDTO;
 import tech.ada.projeto_ada.usuario.dto.mapper.CriarUsuarioRequestMapper;
 import tech.ada.projeto_ada.usuario.model.Usuario;
 import tech.ada.projeto_ada.usuario.service.AtualizarUsuarioService;
@@ -16,15 +16,15 @@ import tech.ada.projeto_ada.usuario.service.DeletarUsuarioService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/usuarios")
-public class UsuarioController {
+@RequestMapping(path = "/api/usuarios")
+public class UsuarioApiController {
 
     private final BuscarUsuarioService buscarUsuarioService;
     private final CriarUsuarioService criarUsuarioService;
     private final AtualizarUsuarioService atualizarUsuarioService;
     private final DeletarUsuarioService deletarUsuarioService;
 
-    public UsuarioController(BuscarUsuarioService buscarUsuarioService, CriarUsuarioService criarUsuarioService, AtualizarUsuarioService atualizarUsuarioService, DeletarUsuarioService deletarUsuarioService) {
+    public UsuarioApiController(BuscarUsuarioService buscarUsuarioService, CriarUsuarioService criarUsuarioService, AtualizarUsuarioService atualizarUsuarioService, DeletarUsuarioService deletarUsuarioService) {
         this.buscarUsuarioService = buscarUsuarioService;
         this.criarUsuarioService = criarUsuarioService;
         this.atualizarUsuarioService = atualizarUsuarioService;
@@ -32,7 +32,7 @@ public class UsuarioController {
     }
 
     @GetMapping
-    public List<UsuarioDTO> buscarTodosUsuarios() {
+    public List<UsuarioResponseDTO> buscarTodosUsuarios() {
         return buscarUsuarioService.buscarTodosUsuarios();
     }
 
