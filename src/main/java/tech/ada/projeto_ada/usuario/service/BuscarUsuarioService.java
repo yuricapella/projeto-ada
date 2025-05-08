@@ -30,7 +30,7 @@ public class BuscarUsuarioService {
     public Usuario buscarUsuarioPorId(Long id) {
         Optional<Usuario> usuarioOptional = repository.findById(id);
         return usuarioOptional
-                .orElseThrow(() -> new UsuarioNaoEncontradoException("Usuário com ID " + id + " não encontrado"));
+                .orElseThrow(() -> new UsuarioNaoEncontradoException(id));
     }
 
 

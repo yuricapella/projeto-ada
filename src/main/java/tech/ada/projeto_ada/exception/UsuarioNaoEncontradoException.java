@@ -5,4 +5,8 @@ public class UsuarioNaoEncontradoException extends RuntimeException{
         super(mensagem);
     }
 
+    public UsuarioNaoEncontradoException(Long id) {
+        super("Usuário com id " + id + " não encontrado.");
+    }
+
 }
