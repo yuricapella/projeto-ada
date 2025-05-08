@@ -22,13 +22,17 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableMethodSecurity
 public class SecurityConfig {
 
-        @Bean
+    @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .csrf(csrf -> csrf.ignoringRequestMatchers(new AntPathRequestMatcher("/api/**")))
+                .csrf(csrf -> csrf.ignoringRequestMatchers(
+                        new AntPathRequestMatcher("/api/**"),
+                        new AntPathRequestMatcher("/h2/**")
+                ))
+            .headers(headers -> headers.frameOptions().disable())
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/", "/login", "/cadastro", "/usuarios/cadastro",
-                        "/css/**", "/js/**", "/h2/**",
+                        "/css/**", "/js/**","/h2/**",
                         "/swagger.html", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/usuarios").permitAll()
                 .requestMatchers("/api/usuarios/**").authenticated()
