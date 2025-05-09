@@ -9,10 +9,6 @@
     <div class="container">
         <div th:replace="~{fragments/navigation :: mainNav}"></div>
 
-        <header th:replace="~{fragments/header :: header(pageTitle='Calculadora de Imposto de Renda')}"></header>
-
-        <div th:replace="~{fragments/navigation :: logicaNav}"></div>
-
         <main>
             <section class="welcome">
                 <h2>Calculadora de Imposto de Renda</h2>
@@ -20,7 +16,7 @@
             </section>
 
             <div class="form-container">
-                <form action="/calculate" method="post">
+                <form th:action="@{/logica-programacao/calculate}" method="post">
                     <div class="form-group">
                         <label for="salaries">Digite os salários brutos (separados por espaço ou vírgula):</label>
                         <input type="text" id="salaries" name="salaries" required />

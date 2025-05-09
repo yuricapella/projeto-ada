@@ -9,10 +9,6 @@
     <div class="container">
         <div th:replace="~{fragments/navigation :: mainNav}"></div>
 
-        <header th:replace="~{fragments/header :: header(pageTitle='Resultados - Calculadora de Imposto de Renda')}"></header>
-
-        <div th:replace="~{fragments/navigation :: logicaNav}"></div>
-
         <main>
             <section class="welcome">
                 <h2>Resultados do Cálculo</h2>
@@ -50,7 +46,7 @@
                 </table>
 
                 <div class="form-actions">
-                    <form action="/salario" method="get">
+                    <form action="/logica-programacao/salario" method="get">
                         <button type="submit" class="btn">Calcular Novamente</button>
                     </form>
                 </div>

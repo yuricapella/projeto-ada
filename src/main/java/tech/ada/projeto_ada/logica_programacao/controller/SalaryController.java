@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
+@RequestMapping("/logica-programacao")
 public class SalaryController {
 
     private final SalaryService salaryService;
