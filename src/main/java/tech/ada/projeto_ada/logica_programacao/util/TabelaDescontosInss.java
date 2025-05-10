@@ -1,10 +1,11 @@
 package tech.ada.projeto_ada.logica_programacao.util;
 
+//2025
 public enum TabelaDescontosInss {
-    FAIXA_SALARIAL_1(1212.00,7.5),
-    FAIXA_SALARIAL_2(2427.35,9),
-    FAIXA_SALARIAL_3(3641.03,12),
-    FAIXA_SALARIAL_4(7087.22,14),
+    FAIXA_SALARIAL_1(1518.00,7.5),
+    FAIXA_SALARIAL_2(2793.88,9),
+    FAIXA_SALARIAL_3(4190.84,12),
+    FAIXA_SALARIAL_4(8157.41,14),
     FAIXA_SALARIAL_5(Double.MAX_VALUE,14);
 
     private final double limite;

@@ -1,7 +1,8 @@
 package tech.ada.projeto_ada.logica_programacao.util;
 
+//2025
 public enum TabelaDescontosImpostoDeRenda {
-    FAIXA_SALARIAL_1(1903.98,0),
+    FAIXA_SALARIAL_1(2428.80,0),
     FAIXA_SALARIAL_2(2826.65,7.5),
     FAIXA_SALARIAL_3(3751.05,15),
     FAIXA_SALARIAL_4(4664.68,22.5),
