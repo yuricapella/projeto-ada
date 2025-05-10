@@ -1,4 +1,4 @@
-package tech.ada.projeto_ada.config;
+package tech.ada.projeto_ada.config.inicializador;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -12,7 +12,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Configuration
-public class DataInitializer {
+public class UsuarioDataInitializer {
 
     @Bean
     CommandLineRunner initDatabase(UsuarioRepository repository, PasswordEncoder encoder) {
