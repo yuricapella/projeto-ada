@@ -5,6 +5,10 @@ public class Salary {
     private double descontoInss;
     private double descontoImpostoDeRenda;
     private double salarioLiquido;
+    private int numeroDependentes;
+
+    private double inssPercentual;
+    private double irrfPercentual;
 
     public Salary(double salarioBruto) {
         this.salarioBruto = salarioBruto;
@@ -34,7 +38,32 @@ public class Salary {
         return salarioLiquido;
     }
 
-    public void calcularSalarioLiquido() {
-        this.salarioLiquido = this.salarioBruto - this.descontoInss - this.descontoImpostoDeRenda;
+    public void setSalarioLiquido(double salarioLiquido) {
+        this.salarioLiquido = salarioLiquido;
+    }
+
+
+    public int getNumeroDependentes() {
+        return numeroDependentes;
+    }
+
+    public void setNumeroDependentes(int numeroDependentes) {
+        this.numeroDependentes = numeroDependentes;
+    }
+
+    public double getInssPercentual() {
+        return inssPercentual;
+    }
+
+    public void setInssPercentual(double inssPercentual) {
+        this.inssPercentual = inssPercentual;
+    }
+
+    public double getIrrfPercentual() {
+        return irrfPercentual;
+    }
+
+    public void setIrrfPercentual(double irrfPercentual) {
+        this.irrfPercentual = irrfPercentual;
     }
 }

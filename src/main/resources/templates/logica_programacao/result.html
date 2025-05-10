@@ -33,15 +33,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="salary, iterStat : ${salaries}">
-                            <td th:text="${iterStat.count}"></td>
-                            <td th:text="${#numbers.formatDecimal(salary.salarioBruto, 1, 2, 'POINT')}"></td>
-                            <td th:text="${T(tech.ada.projeto_ada.logica_programacao.util.TabelaDescontosInss).obterDescontoPercentual(salary.salarioBruto) + '%'}"></td>
-                            <td th:text="${#numbers.formatDecimal(salary.descontoInss, 1, 2, 'POINT')}"></td>
-                            <td th:text="${T(tech.ada.projeto_ada.logica_programacao.util.TabelaDescontosImpostoDeRenda).obterDescontoPercentual(salary.salarioBruto) + '%'}"></td>
-                            <td th:text="${#numbers.formatDecimal(salary.descontoImpostoDeRenda, 1, 2, 'POINT')}"></td>
-                            <td th:text="${#numbers.formatDecimal(salary.salarioLiquido, 1, 2, 'POINT')}"></td>
-                        </tr>
+                    <tr th:each="salary, iterStat : ${salaries}">
+                        <td th:text="${iterStat.count}"></td>
+                        <td th:text="${#numbers.formatDecimal(salary.salarioBruto, 1, 2, 'POINT')}"></td>
+                        <td th:text="${#numbers.formatDecimal(salary.inssPercentual, 1, 2, 'POINT')} + '%'"></td>
+                        <td th:text="${#numbers.formatDecimal(salary.descontoInss, 1, 2, 'POINT')}"></td>
+                        <td th:text="${#numbers.formatDecimal(salary.irrfPercentual, 1, 2, 'POINT')} + '%'"></td>
+                        <td th:text="${#numbers.formatDecimal(salary.descontoImpostoDeRenda, 1, 2, 'POINT')}"></td>
+                        <td th:text="${#numbers.formatDecimal(salary.salarioLiquido, 1, 2, 'POINT')}"></td>
+                    </tr>
                     </tbody>
                 </table>
 
