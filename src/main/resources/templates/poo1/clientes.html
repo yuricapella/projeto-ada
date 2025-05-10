@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head(pageTitle='Clientes')}">
+    <meta charset="UTF-8">
+    <title>Clientes</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="container">
+    <div th:replace="~{fragments/navigation :: mainNav}"></div>
+
+    <main>
+        <section class="welcome">
+            <h2>Lista de Clientes</h2>
+            <p>Abaixo estão os clientes cadastrados no sistema.</p>
+        </section>
+
+        <div th:if="${#lists.isEmpty(clientes)}" class="error-message">
+            <p>Nenhum cliente encontrado.</p>
+        </div>
+
+        <div th:unless="${#lists.isEmpty(clientes)}">
+            <table>
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nome</th>
+                    <th>Documento</th>
+                    <th>Endereço</th>
+                    <th>Telefone</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="cliente, iterStat : ${clientes}">
+                    <td th:text="${iterStat.count}"></td>
+                    <td th:text="${cliente.nome}"></td>
+                    <td th:text="${cliente.documento}"></td>
+                    <td th:text="${cliente.endereco}"></td>
+                    <td th:text="${cliente.telefone}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</div>
+</body>
+</html>
