@@ -21,9 +21,7 @@ public class CriarUsuarioService {
         if (repository.existsByEmail(usuario.getEmail())) {
             throw new DataIntegrityViolationException("Email já cadastrado");
         }
-        String senhaAntiga = usuario.getSenha();
-        String senhaCriptografada = passwordEncoder.encode(senhaAntiga);
-        usuario.setSenha(senhaCriptografada);
+        usuario.setSenha(passwordEncoder.encode(usuario.getSenha()));
         return repository.save(usuario);
     }
 }
