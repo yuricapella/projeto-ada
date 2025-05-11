@@ -19,6 +19,12 @@
             <p>Nenhum cliente encontrado.</p>
         </div>
 
+        <div class="button-group">
+            <a th:href="@{/poo1/cliente/cadastrar}" class="btn">Cadastrar Novo Cliente</a>
+            <a th:href="@{/poo1/cliente/atualizar}" class="btn">Atualizar Cliente</a>
+            <a th:href="@{/poo1/cliente/excluir}" class="btn">Excluir Cliente</a>
+        </div>
+
         <div th:unless="${#lists.isEmpty(clientes)}">
             <table>
                 <thead>
