@@ -1,4 +1,4 @@
-package tech.ada.projeto_ada.poo1.dto;
+package tech.ada.projeto_ada.poo1.cliente.dto;
 
 public class ClienteResponseDTO {
     private String nome;

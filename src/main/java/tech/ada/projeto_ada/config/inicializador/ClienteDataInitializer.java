@@ -3,9 +3,9 @@ package tech.ada.projeto_ada.config.inicializador;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import tech.ada.projeto_ada.poo1.model.Cliente;
-import tech.ada.projeto_ada.poo1.repository.ClienteRepository;
-import tech.ada.projeto_ada.poo1.util.TipoCliente;
+import tech.ada.projeto_ada.poo1.cliente.model.Cliente;
+import tech.ada.projeto_ada.poo1.cliente.repository.ClienteRepository;
+import tech.ada.projeto_ada.poo1.cliente.util.TipoCliente;
 
 import java.util.ArrayList;
 import java.util.List;

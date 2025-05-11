@@ -1,4 +1,4 @@
-package tech.ada.projeto_ada.poo1.util;
+package tech.ada.projeto_ada.poo1.cliente.util;
 
 public enum TipoCliente {
     PESSOA_FISICA("CPF"),

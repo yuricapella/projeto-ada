@@ -1,7 +1,7 @@
-package tech.ada.projeto_ada.poo1.dto.mapper;
+package tech.ada.projeto_ada.poo1.cliente.dto.mapper;
 
-import tech.ada.projeto_ada.poo1.dto.ClienteResponseDTO;
-import tech.ada.projeto_ada.poo1.model.Cliente;
+import tech.ada.projeto_ada.poo1.cliente.dto.ClienteResponseDTO;
+import tech.ada.projeto_ada.poo1.cliente.model.Cliente;
 
 public class ClienteResponseMapper {
     public static ClienteResponseDTO toClienteDTO(Cliente cliente){

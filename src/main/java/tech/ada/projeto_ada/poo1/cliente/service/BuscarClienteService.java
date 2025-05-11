@@ -1,11 +1,11 @@
-package tech.ada.projeto_ada.poo1.service.cliente;
+package tech.ada.projeto_ada.poo1.cliente.service;
 
 import org.springframework.stereotype.Service;
 import tech.ada.projeto_ada.exception.ClienteNaoEncontradoException;
-import tech.ada.projeto_ada.poo1.dto.ClienteResponseDTO;
-import tech.ada.projeto_ada.poo1.dto.mapper.ClienteResponseMapper;
-import tech.ada.projeto_ada.poo1.model.Cliente;
-import tech.ada.projeto_ada.poo1.repository.ClienteRepository;
+import tech.ada.projeto_ada.poo1.cliente.dto.ClienteResponseDTO;
+import tech.ada.projeto_ada.poo1.cliente.dto.mapper.ClienteResponseMapper;
+import tech.ada.projeto_ada.poo1.cliente.model.Cliente;
+import tech.ada.projeto_ada.poo1.cliente.repository.ClienteRepository;
 
 import java.util.List;
 import java.util.Optional;

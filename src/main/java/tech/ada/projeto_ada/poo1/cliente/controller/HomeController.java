@@ -1,4 +1,4 @@
-package tech.ada.projeto_ada.poo1.controller;
+package tech.ada.projeto_ada.poo1.cliente.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

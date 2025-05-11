@@ -1,11 +1,11 @@
-package tech.ada.projeto_ada.poo1.controller;
+package tech.ada.projeto_ada.poo1.cliente.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import tech.ada.projeto_ada.poo1.dto.ClienteResponseDTO;
-import tech.ada.projeto_ada.poo1.service.cliente.BuscarClienteService;
+import tech.ada.projeto_ada.poo1.cliente.dto.ClienteResponseDTO;
+import tech.ada.projeto_ada.poo1.cliente.service.BuscarClienteService;
 
 import java.util.List;
 
