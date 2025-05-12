@@ -4,14 +4,13 @@ import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import tech.ada.projeto_ada.poo1.cliente.dto.AtualizarClienteRequestDTO;
 import tech.ada.projeto_ada.poo1.cliente.dto.ClienteResponseDTO;
 import tech.ada.projeto_ada.poo1.cliente.dto.CriarClienteRequestDTO;
 import tech.ada.projeto_ada.poo1.cliente.dto.mapper.CriarClienteRequestMapper;
 import tech.ada.projeto_ada.poo1.cliente.model.Cliente;
+import tech.ada.projeto_ada.poo1.cliente.service.AtualizarClienteService;
 import tech.ada.projeto_ada.poo1.cliente.service.BuscarClienteService;
 import tech.ada.projeto_ada.poo1.cliente.service.CriarClienteService;
 import tech.ada.projeto_ada.usuario.dto.mapper.CriarUsuarioRequestMapper;
@@ -24,15 +23,17 @@ public class ClienteViewController {
 
     private final BuscarClienteService buscarClienteService;
     private final CriarClienteService criarClienteService;
+    private final AtualizarClienteService atualizarClienteService;
 
-    public ClienteViewController(BuscarClienteService buscarClienteService, CriarClienteService criarClienteService) {
+    public ClienteViewController(BuscarClienteService buscarClienteService, CriarClienteService criarClienteService, AtualizarClienteService atualizarClienteService) {
         this.buscarClienteService = buscarClienteService;
         this.criarClienteService = criarClienteService;
+        this.atualizarClienteService = atualizarClienteService;
     }
 
     @GetMapping("/listar")
     public String listarClientes(Model model) {
-        List<ClienteResponseDTO> clientes = buscarClienteService.buscarTodosClientes();
+        List<Cliente> clientes = buscarClienteService.buscarTodosClientes();
         model.addAttribute("clientes", clientes);
         return "poo1/cliente/listar";
     }
@@ -53,6 +54,26 @@ public class ClienteViewController {
 
         Cliente novoCliente = CriarClienteRequestMapper.toEntity(novoClienteRequestDTO);
         criarClienteService.criarCliente(novoCliente);
+        return "redirect:/poo1/cliente/listar";
+    }
+
+    @GetMapping("/atualizar/{id}")
+    public String mostrarFormularioAtualizacao(@PathVariable Long id, Model model) {
+        Cliente cliente = buscarClienteService.buscarClientePorId(id);
+        model.addAttribute("cliente", cliente);
+        return "poo1/cliente/atualizar";
+    }
+
+    @PutMapping("/atualizar/{id}")
+    public String atualizarCliente(
+            @ModelAttribute("cliente") @Valid AtualizarClienteRequestDTO clienteAtualizado,
+            BindingResult bindingResult,
+            @PathVariable Long id,
+            Model model) {
+        if (bindingResult.hasErrors()) {
+            return "poo1/cliente/atualizar";
+        }
+        atualizarClienteService.atualizar(clienteAtualizado, id);
         return "redirect:/poo1/cliente/listar";
     }
 }

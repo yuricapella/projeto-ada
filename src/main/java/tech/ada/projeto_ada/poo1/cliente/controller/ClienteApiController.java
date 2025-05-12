@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import tech.ada.projeto_ada.poo1.cliente.dto.ClienteResponseDTO;
+import tech.ada.projeto_ada.poo1.cliente.model.Cliente;
 import tech.ada.projeto_ada.poo1.cliente.service.BuscarClienteService;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public class ClienteApiController {
     }
 
     @GetMapping
-    public List<ClienteResponseDTO> buscarTodosClientes(){
+    public List<Cliente> buscarTodosClientes(){
         return buscarClienteService.buscarTodosClientes();
     }
 

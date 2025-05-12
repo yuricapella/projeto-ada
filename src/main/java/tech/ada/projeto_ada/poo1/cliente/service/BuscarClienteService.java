@@ -19,11 +19,8 @@ public class BuscarClienteService {
         this.repository = repository;
     }
 
-    public List<ClienteResponseDTO> buscarTodosClientes() {
-        return repository.findAll()
-                .stream()
-                .map(cliente -> ClienteResponseMapper.toClienteDTO(cliente))
-                .collect(Collectors.toList());
+    public List<Cliente> buscarTodosClientes() {
+        return repository.findAll();
     }
 
     public Cliente buscarClientePorId(Long id) {
