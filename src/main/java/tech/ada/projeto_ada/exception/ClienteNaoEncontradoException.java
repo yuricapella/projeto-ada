@@ -6,7 +6,7 @@ public class ClienteNaoEncontradoException extends RuntimeException{
     }
 
     public ClienteNaoEncontradoException(Long id) {
-        super("Usuário com id " + id + " não encontrado.");
+        super("Cliente com id " + id + " não encontrado.");
     }
 
 }
