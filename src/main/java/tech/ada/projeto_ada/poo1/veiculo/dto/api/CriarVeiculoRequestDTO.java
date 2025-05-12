@@ -54,7 +54,7 @@ public class CriarVeiculoRequestDTO {
         this.valorDiaria = valorDiaria;
     }
 
-    public Boolean isDisponivel() {
+    public Boolean getDisponivel() {
         return disponivel;
     }
 

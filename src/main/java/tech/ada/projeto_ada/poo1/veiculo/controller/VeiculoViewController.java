@@ -70,7 +70,16 @@ public class VeiculoViewController {
     @GetMapping("/atualizar/{id}")
     public String mostrarFormularioAtualizacao(@PathVariable Long id, Model model) {
         Veiculo veiculo = buscarVeiculoService.buscarVeiculoPorId(id);
-        model.addAttribute("veiculo", veiculo);
+        AtualizarVeiculoRequestDTO dto = new AtualizarVeiculoRequestDTO(
+                veiculo.getModelo(),
+                veiculo.getPlaca(),
+                veiculo.getValorDiaria(),
+                veiculo.getDisponivel(),
+                veiculo.getTipo()
+        );
+        model.addAttribute("veiculo", dto);
+        model.addAttribute("id", id);
+        model.addAttribute("tiposVeiculo", TipoVeiculo.values());
         return "poo1/veiculo/atualizar";
     }
 
@@ -81,11 +90,13 @@ public class VeiculoViewController {
             @PathVariable Long id,
             Model model) {
         if (bindingResult.hasErrors()) {
+            model.addAttribute("tiposVeiculo", TipoVeiculo.values());
             return "poo1/veiculo/atualizar";
         }
         atualizarVeiculoService.atualizar(veiculoAtualizado, id);
         return "redirect:/poo1/veiculo/listar";
     }
+
 
     @DeleteMapping("/deletar/{id}")
     public String deletarVeiculo(@PathVariable Long id) {

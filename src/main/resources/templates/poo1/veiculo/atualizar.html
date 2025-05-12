@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head(pageTitle='Atualizar Veículo')}">
+    <meta charset="UTF-8">
+    <title>Atualizar Veículo</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="container">
+    <div th:replace="~{fragments/navigation :: mainNav}"></div>
+
+    <main>
+        <section class="form-section">
+            <h2>Atualizar Veículo</h2>
+            <form th:action="@{/poo1/veiculo/atualizar/{id}(id=${id})}" th:object="${veiculo}" method="post">
+                <input type="hidden" name="_method" value="put"/>
+                <div class="form-group">
+                    <label for="modelo">Modelo:</label>
+                    <input type="text" id="modelo" th:field="*{modelo}" required>
+                    <div th:replace="~{fragments/form-validations :: campoErro('modelo')}"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="placa">Placa:</label>
+                    <input type="text" id="placa" th:field="*{placa}" required>
+                    <div th:replace="~{fragments/form-validations :: campoErro('placa')}"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="valorDiaria">Valor da Diária:</label>
+                    <input type="number" step="0.01" id="valorDiaria" th:field="*{valorDiaria}" required>
+                    <div th:replace="~{fragments/form-validations :: campoErro('valorDiaria')}"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="disponivel">Disponível:</label>
+                    <select id="disponivel" th:field="*{disponivel}" required>
+                        <option value="">-- Selecione --</option>
+                        <option th:value="true">Sim</option>
+                        <option th:value="false">Não</option>
+                    </select>
+                    <div th:replace="~{fragments/form-validations :: campoErro('disponivel')}"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="tipo">Categoria de Veículo:</label>
+                    <select id="tipo" th:field="*{tipo}" required>
+                        <option value="">-- Selecione --</option>
+                        <option th:each="tipo : ${T(tech.ada.projeto_ada.poo1.veiculo.util.TipoVeiculo).values()}"
+                                th:value="${tipo}"
+                                th:text="${tipo}"></option>
+                    </select>
+                    <div th:replace="~{fragments/form-validations :: campoErro('tipo')}"></div>
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="btn">Atualizar</button>
+                    <a th:href="@{/poo1/veiculo/listar}" class="btn">Cancelar</a>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</div>
+</body>
+</html>

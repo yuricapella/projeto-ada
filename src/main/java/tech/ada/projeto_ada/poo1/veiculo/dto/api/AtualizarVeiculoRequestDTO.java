@@ -2,6 +2,7 @@ package tech.ada.projeto_ada.poo1.veiculo.dto.api;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import tech.ada.projeto_ada.poo1.veiculo.util.TipoVeiculo;
 
 public class AtualizarVeiculoRequestDTO {
@@ -12,6 +13,7 @@ public class AtualizarVeiculoRequestDTO {
     private String placa;
 
     @NotNull(message = "Valor da diária não pode ser nulo.")
+    @Positive(message = "Valor da diária não pode ser 0 ou negativo.")
     private Double valorDiaria;
 
     @NotNull(message = "Disponibilidade deve ser informada.")

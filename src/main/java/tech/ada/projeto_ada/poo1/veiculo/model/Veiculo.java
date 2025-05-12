@@ -70,7 +70,7 @@ public abstract class Veiculo {
         this.valorDiaria = valorDiaria;
     }
 
-    public boolean isDisponivel() {
+    public boolean getDisponivel() {
         return disponivel;
     }
 

@@ -9,4 +9,6 @@ tem que ver como faz no site
 atrelar as informações ao usuario logado, para que outro usuario nao possa ver as mesmas coisas. (tentarei ao finalizar o projeto com ele funcional)
 ---------------------
 
+colocar no html os usuarios disponiveis para logar no site
+---------------------
 

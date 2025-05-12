@@ -9,7 +9,7 @@ public class VeiculoResponseMapper {
                 veiculo.getModelo(),
                 veiculo.getPlaca(),
                 veiculo.getValorDiaria(),
-                veiculo.isDisponivel(),
+                veiculo.getDisponivel(),
                 veiculo.getTipo()
         );
     }
