@@ -1,8 +1,9 @@
 package tech.ada.projeto_ada.poo1.cliente.service;
 
-import tech.ada.projeto_ada.poo1.cliente.model.Cliente;
+import org.springframework.stereotype.Service;
 import tech.ada.projeto_ada.poo1.cliente.repository.ClienteRepository;
 
+@Service
 public class DeletarClienteService {
     private final ClienteRepository repository;
     private final BuscarClienteService buscarClienteService;

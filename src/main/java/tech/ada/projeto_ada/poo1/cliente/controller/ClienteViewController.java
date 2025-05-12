@@ -6,14 +6,13 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import tech.ada.projeto_ada.poo1.cliente.dto.AtualizarClienteRequestDTO;
-import tech.ada.projeto_ada.poo1.cliente.dto.ClienteResponseDTO;
 import tech.ada.projeto_ada.poo1.cliente.dto.CriarClienteRequestDTO;
 import tech.ada.projeto_ada.poo1.cliente.dto.mapper.CriarClienteRequestMapper;
 import tech.ada.projeto_ada.poo1.cliente.model.Cliente;
 import tech.ada.projeto_ada.poo1.cliente.service.AtualizarClienteService;
 import tech.ada.projeto_ada.poo1.cliente.service.BuscarClienteService;
 import tech.ada.projeto_ada.poo1.cliente.service.CriarClienteService;
-import tech.ada.projeto_ada.usuario.dto.mapper.CriarUsuarioRequestMapper;
+import tech.ada.projeto_ada.poo1.cliente.service.DeletarClienteService;
 
 import java.util.List;
 
@@ -24,11 +23,13 @@ public class ClienteViewController {
     private final BuscarClienteService buscarClienteService;
     private final CriarClienteService criarClienteService;
     private final AtualizarClienteService atualizarClienteService;
+    private final DeletarClienteService deletarClienteService;
 
-    public ClienteViewController(BuscarClienteService buscarClienteService, CriarClienteService criarClienteService, AtualizarClienteService atualizarClienteService) {
+    public ClienteViewController(BuscarClienteService buscarClienteService, CriarClienteService criarClienteService, AtualizarClienteService atualizarClienteService, DeletarClienteService deletarClienteService) {
         this.buscarClienteService = buscarClienteService;
         this.criarClienteService = criarClienteService;
         this.atualizarClienteService = atualizarClienteService;
+        this.deletarClienteService = deletarClienteService;
     }
 
     @GetMapping("/listar")
@@ -74,6 +75,12 @@ public class ClienteViewController {
             return "poo1/cliente/atualizar";
         }
         atualizarClienteService.atualizar(clienteAtualizado, id);
+        return "redirect:/poo1/cliente/listar";
+    }
+
+    @DeleteMapping("/deletar/{id}")
+    public String deletarCliente(@PathVariable Long id) {
+        deletarClienteService.deletarCliente(id);
         return "redirect:/poo1/cliente/listar";
     }
 }

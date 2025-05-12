@@ -39,8 +39,11 @@
                     <td th:text="${cliente.telefone}"></td>
                     <td>
                         <a th:href="@{/poo1/cliente/atualizar/{id}(id=${cliente.id})}" class="btn">Editar</a>
-                        <a th:href="@{/poo1/cliente/excluir/{id}(id=${cliente.id})}" class="btn btn-danger"
-                           onclick="return confirm('Confirma exclusão?')">Excluir</a>
+                        <form th:action="@{/poo1/cliente/deletar/{id}(id=${cliente.id})}" method="post"
+                              onsubmit="return confirm('Confirma exclusão?');" style="display:inline;">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="btn btn-danger">Excluir</button>
+                        </form>
                     </td>
                 </tr>
                 </tbody>
