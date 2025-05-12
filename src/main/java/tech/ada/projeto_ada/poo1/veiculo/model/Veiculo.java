@@ -8,6 +8,7 @@ import tech.ada.projeto_ada.usuario.util.FormataData;
 import java.time.LocalDateTime;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "VEICULO")
 public abstract class Veiculo {
     @Id

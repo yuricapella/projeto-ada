@@ -4,7 +4,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import tech.ada.projeto_ada.poo1.veiculo.model.veiculo_comum.Caminhao;
-import tech.ada.projeto_ada.poo1.veiculo.model.veiculo_comum.CarroComun;
+import tech.ada.projeto_ada.poo1.veiculo.model.veiculo_comum.CarroComum;
 import tech.ada.projeto_ada.poo1.veiculo.model.veiculo_comum.Moto;
 import tech.ada.projeto_ada.poo1.veiculo.model.Veiculo;
 import tech.ada.projeto_ada.poo1.veiculo.model.veiculo_luxo.CarroPremium;
@@ -45,7 +45,7 @@ public class VeiculoDataInitializer {
         }
 
         for (int i = 0; i < quantidadeCarroComum; i++) {
-            veiculosGerados.add(new CarroComun("Carro comum " + (i + 1), "CAR" + (i + 1), 320, true, TipoVeiculo.COMUM));
+            veiculosGerados.add(new CarroComum("Carro comum " + (i + 1), "CAR" + (i + 1), 320, true, TipoVeiculo.COMUM));
         }
 
         for (int i = 0; i < quantidadeCarroPremium; i++) {

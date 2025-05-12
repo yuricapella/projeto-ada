@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head(pageTitle='Veículos')}">
+    <meta charset="UTF-8">
+    <title>Veículos</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="container">
+    <div th:replace="~{fragments/navigation :: mainNav}"></div>
+
+    <main>
+        <section class="welcome">
+            <h2>Lista de Veículos</h2>
+            <p>Abaixo estão os veículos cadastrados no sistema.</p>
+        </section>
+
+        <div th:if="${#lists.isEmpty(veiculos)}" class="error-message">
+            <p>Nenhum veículo encontrado.</p>
+        </div>
+
+        <div class="button-group">
+            <a th:href="@{/poo1/veiculo/cadastrar}" class="btn">Cadastrar Novo Veículo</a>
+        </div>
+
+        <div th:unless="${#lists.isEmpty(veiculos)}">
+            <table>
+                <thead>
+                <tr>
+                    <th>#</th><th>Modelo</th><th>Placa</th><th>Tipo</th><th>Valor Diária</th><th>Disponível</th><th>Ações</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="veiculo, iterStat : ${veiculos}">
+                    <td th:text="${iterStat.count}"></td>
+                    <td th:text="${veiculo.modelo}"></td>
+                    <td th:text="${veiculo.placa}"></td>
+                    <td th:text="${veiculo.tipo}"></td>
+                    <td th:text="${#numbers.formatDecimal(veiculo.valorDiaria, 1, 'POINT', 2, 'COMMA')}"></td>
+                    <td th:text="${veiculo.disponivel ? 'Sim' : 'Não'}"></td>
+                    <td>
+                        <a th:href="@{/poo1/veiculo/alugar/{id}(id=${veiculo.id})}" class="btn btn-primary">Alugar</a>
+                        <a th:href="@{/poo1/veiculo/atualizar/{id}(id=${veiculo.id})}" class="btn">Editar</a>
+                        <form th:action="@{/poo1/veiculo/deletar/{id}(id=${veiculo.id})}" method="post"
+                              onsubmit="return confirm('Confirma exclusão?');" style="display:inline;">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="btn btn-danger">Excluir</button>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</div>
+</body>
+</html>

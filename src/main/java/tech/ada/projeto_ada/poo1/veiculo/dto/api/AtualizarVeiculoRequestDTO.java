@@ -1,4 +1,4 @@
-package tech.ada.projeto_ada.poo1.veiculo.dto;
+package tech.ada.projeto_ada.poo1.veiculo.dto.api;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

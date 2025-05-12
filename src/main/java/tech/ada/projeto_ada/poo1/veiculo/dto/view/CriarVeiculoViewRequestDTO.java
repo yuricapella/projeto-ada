@@ -1,10 +1,13 @@
-package tech.ada.projeto_ada.poo1.veiculo.dto;
+package tech.ada.projeto_ada.poo1.veiculo.dto.view;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import tech.ada.projeto_ada.poo1.veiculo.util.TipoVeiculo;
+import tech.ada.projeto_ada.poo1.veiculo.util.TipoClasseVeiculo;
 
-public class CriarVeiculoRequestDTO {
+public class CriarVeiculoViewRequestDTO {
+
     @NotBlank(message = "Modelo não pode ser nulo.")
     private String modelo;
 
@@ -12,6 +15,7 @@ public class CriarVeiculoRequestDTO {
     private String placa;
 
     @NotNull(message = "Valor da diária não pode ser nulo.")
+    @Positive(message = "Valor da diária não pode ser 0 ou negativo.")
     private Double valorDiaria;
 
     @NotNull(message = "Disponibilidade deve ser informada.")
@@ -20,9 +24,14 @@ public class CriarVeiculoRequestDTO {
     @NotNull(message = "Tipo do veículo deve ser informado.")
     private TipoVeiculo tipo;
 
-    public CriarVeiculoRequestDTO() {}
+    @NotNull(message = "Tipo da classe do veículo deve ser informado.")
+    private TipoClasseVeiculo tipoClasse;
 
-    public CriarVeiculoRequestDTO(String modelo, String placa, Double valorDiaria, Boolean disponivel, TipoVeiculo tipo) {
+    public CriarVeiculoViewRequestDTO() {
+
+    }
+
+    public CriarVeiculoViewRequestDTO(String modelo, String placa, Double valorDiaria, Boolean disponivel, TipoVeiculo tipo) {
         this.modelo = modelo;
         this.placa = placa;
         this.valorDiaria = valorDiaria;
@@ -69,4 +78,13 @@ public class CriarVeiculoRequestDTO {
     public void setTipo(TipoVeiculo tipo) {
         this.tipo = tipo;
     }
+
+    public TipoClasseVeiculo getTipoClasse() {
+        return tipoClasse;
+    }
+
+    public void setTipoClasse(TipoClasseVeiculo tipoClasse) {
+        this.tipoClasse = tipoClasse;
+    }
 }
+

@@ -1,0 +1,11 @@
+<!-- fragments/form-validations.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="campoErro(campo)">
+    <div th:if="${#fields.hasErrors(campo)}"
+         th:errors="*{__${campo}__}"
+         class="error"></div>
+</div>
+</body>
+</html>

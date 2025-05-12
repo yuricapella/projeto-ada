@@ -23,8 +23,9 @@
                     <label for="documento">Tipo de Documento:</label>
                     <select id="documento" th:field="*{documento}" required>
                         <option value="">-- Selecione --</option>
-                        <option value="CPF">CPF</option>
-                        <option value="CNPJ">CNPJ</option>
+                        <option th:each="tipo : ${T(tech.ada.projeto_ada.poo1.cliente.util.TipoCliente).values()}"
+                                th:value="${tipo.getIdentificador()}"
+                                th:text="${tipo.getIdentificador()}"></option>
                     </select>
                     <div th:if="${#fields.hasErrors('documento')}" th:errors="*{documento}" class="error-message"></div>
                 </div>

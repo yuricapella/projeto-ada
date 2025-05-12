@@ -1,9 +1,15 @@
 package tech.ada.projeto_ada.poo1.veiculo.model.veiculo_luxo;
 
+import jakarta.persistence.Entity;
 import tech.ada.projeto_ada.poo1.veiculo.model.Veiculo;
 import tech.ada.projeto_ada.poo1.veiculo.util.TipoVeiculo;
 
+@Entity
 public abstract class VeiculoLuxo extends Veiculo implements ServicoLuxo {
+
+    public VeiculoLuxo(){
+
+    }
 
     public VeiculoLuxo(String modelo, String placa, double valorDiaria, boolean disponivel, TipoVeiculo tipo) {
         super(modelo, placa, valorDiaria, disponivel, tipo);
