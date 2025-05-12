@@ -14,10 +14,9 @@ public class Cliente {
     private String documento;
     private String endereco;
     private String telefone;
-    private static long contadorCliente = 1;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idCliente;
+    private long id;
 
     @JsonFormat(pattern = FormataData.PADRAO_DATA_HORA)
     private LocalDateTime dataCriacao;
@@ -68,16 +67,8 @@ public class Cliente {
         this.telefone = telefone;
     }
 
-    public static long getContadorCliente() {
-        return contadorCliente;
-    }
-
-    public static void setContadorCliente(long contadorCliente) {
-        Cliente.contadorCliente = contadorCliente;
-    }
-
-    public long getIdCliente() {
-        return idCliente;
+    public long getId() {
+        return id;
     }
 
     public LocalDateTime getDataCriacao() {
