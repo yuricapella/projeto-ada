@@ -1,4 +1,4 @@
-package tech.ada.projeto_ada.usuario.util;
+package tech.ada.projeto_ada.util;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

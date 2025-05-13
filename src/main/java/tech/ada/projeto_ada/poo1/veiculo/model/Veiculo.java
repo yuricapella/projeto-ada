@@ -3,7 +3,7 @@ package tech.ada.projeto_ada.poo1.veiculo.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import tech.ada.projeto_ada.poo1.veiculo.util.TipoVeiculo;
-import tech.ada.projeto_ada.usuario.util.FormataData;
+import tech.ada.projeto_ada.util.FormataData;
 
 import java.time.LocalDateTime;
 

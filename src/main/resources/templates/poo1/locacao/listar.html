@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head(pageTitle='Locações')}">
+    <meta charset="UTF-8">
+    <title>Locações</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="container">
+    <div th:replace="~{fragments/navigation :: mainNav}"></div>
+
+    <main>
+        <section class="welcome">
+            <h2>Lista de Locações</h2>
+            <p>Abaixo estão as locações cadastradas no sistema.</p>
+        </section>
+
+        <div th:if="${#lists.isEmpty(locacoes)}" class="error-message">
+            <p>Nenhuma locação encontrada.</p>
+        </div>
+
+        <div class="button-group">
+            <a th:href="@{/poo1/locacao/cadastrar}" class="btn">Nova Locação</a>
+        </div>
+
+        <div th:unless="${#lists.isEmpty(locacoes)}">
+            <table>
+                <thead>
+                <tr>
+                    <th>#</th><th>Cliente</th><th>Veículo</th><th>Dias</th><th>Data Início</th><th>Data Fim</th><th>Preço Total</th><th>Ações</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="locacao, iter : ${locacoes}">
+                    <td th:text="${iter.count}"></td>
+                    <td th:text="${locacao.cliente.nome}"></td>
+                    <td th:text="${locacao.veiculo.modelo}"></td>
+                    <td th:text="${locacao.diasDeLocacao}"></td>
+                    <td th:text="${#temporals.format(locacao.dataCriacao, formatoDataHora)}"></td>
+                    <td th:text="${#temporals.format(locacao.dataFinalizacao, formatoDataHora)}"></td>
+                    <td th:text="${#numbers.formatDecimal(locacao.precoTotalLocacao, 1, 'POINT', 2, 'COMMA')}"></td>
+                    <td>
+                        <a th:href="@{/poo1/locacao/atualizar/{id}(id=${locacao.id})}" class="btn">Editar</a>
+                        <form th:action="@{/poo1/locacao/deletar/{id}(id=${locacao.id})}" method="post" onsubmit="return confirm('Confirma exclusão?');" style="display:inline;">
+                            <input type="hidden" name="_method" value="DELETE" />
+                            <button type="submit" class="btn btn-danger">Excluir</button>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</div>
+</body>
+</html>

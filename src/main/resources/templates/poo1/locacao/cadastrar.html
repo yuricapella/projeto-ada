@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head(pageTitle='Cadastrar Locação')}">
+    <meta charset="UTF-8">
+    <title>Cadastrar Locação</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="container">
+    <div th:replace="~{fragments/navigation :: mainNav}"></div>
+
+    <main>
+        <section class="form-section">
+            <h2>Nova Locação</h2>
+            <form th:action="@{/poo1/locacao/salvar}" th:object="${locacao}" method="post">
+
+                <div class="form-group">
+                    <label for="clienteId">Cliente:</label>
+                    <input type="number" id="clienteId" th:field="*{clienteId}" required />
+                    <div th:replace="~{fragments/form-validations :: campoErro('clienteId')}"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="veiculoId">Veículo:</label>
+                    <input type="number" id="veiculoId" th:field="*{veiculoId}" required />
+                    <div th:replace="~{fragments/form-validations :: campoErro('veiculoId')}"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="diasDeLocacao">Dias de Locação:</label>
+                    <input type="number" id="diasDeLocacao" th:field="*{diasDeLocacao}" min="1" required />
+                    <div th:replace="~{fragments/form-validations :: campoErro('diasDeLocacao')}"></div>
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="btn">Salvar</button>
+                    <a th:href="@{/poo1/locacao/listar}" class="btn">Cancelar</a>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</div>
+</body>
+</html>

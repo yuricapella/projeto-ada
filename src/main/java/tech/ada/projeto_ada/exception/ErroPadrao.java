@@ -1,7 +1,7 @@
 package tech.ada.projeto_ada.exception;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import tech.ada.projeto_ada.usuario.util.FormataData;
+import tech.ada.projeto_ada.util.FormataData;
 
 import java.time.LocalDateTime;
 import java.util.Map;
