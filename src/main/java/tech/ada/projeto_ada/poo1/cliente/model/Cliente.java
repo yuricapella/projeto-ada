@@ -13,6 +13,7 @@ public class Cliente {
     private String nome;
     private String documento;
     private String endereco;
+    @Column(unique = true, nullable = false)
     private String telefone;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

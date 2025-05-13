@@ -18,3 +18,7 @@ usar enum para status das transações,criações,para ativar,desativar, finaliz
 as listagens podem pegar somente os status ativos, e também uma opção de filtrar os inativos.
 veiculos alugados nao aparecem na lista de veiculos por exemplo.
 locações canceladas ou finalizadas nao aparecem na lista de locações.
+----------------------
+colocar verificação de cpf ou cnpj em cliente para nao deixar criar o mesmo
+fazer uma verificação se for tipo CPF, só pode 11 digitos, se for tipo CNPJ, só pode 14 digitos
+---------------------
