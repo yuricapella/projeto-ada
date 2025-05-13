@@ -1,7 +1,7 @@
 package tech.ada.projeto_ada.poo1.cliente.service;
 
 import org.springframework.stereotype.Service;
-import tech.ada.projeto_ada.exception.ClienteNaoEncontradoException;
+import tech.ada.projeto_ada.poo1.cliente.exception.ClienteNaoEncontradoException;
 import tech.ada.projeto_ada.poo1.cliente.model.Cliente;
 import tech.ada.projeto_ada.poo1.cliente.repository.ClienteRepository;
 

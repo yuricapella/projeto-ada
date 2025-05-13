@@ -1,6 +1,5 @@
 package tech.ada.projeto_ada.config;
 
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -11,8 +10,6 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import tech.ada.projeto_ada.exception.ErroCodigo;
 import tech.ada.projeto_ada.exception.ErroPadrao;
-import tech.ada.projeto_ada.exception.UsuarioNaoEncontradoException;
-import tech.ada.projeto_ada.exception.VeiculoIndisponivelException;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -20,42 +17,6 @@ import java.util.Map;
 
 @ControllerAdvice
 public class ControllerAdviceRest {
-
-    @ExceptionHandler({UsuarioNaoEncontradoException.class})
-    public ResponseEntity<ErroPadrao> handlerPessoaNaoEncontradaException(UsuarioNaoEncontradoException ex) {
-        ErroPadrao erroPadrao = new ErroPadrao();
-        erroPadrao.setCodigoErro(ErroCodigo.USUARIO_NAO_ENCONTRADO.name());
-        erroPadrao.setDataHora(LocalDateTime.now());
-        erroPadrao.setMensagem(ex.getMessage());
-
-        return ResponseEntity
-                .status(HttpStatus.NOT_FOUND)
-                .body(erroPadrao);
-    }
-
-    @ExceptionHandler(VeiculoIndisponivelException.class)
-    public ResponseEntity<ErroPadrao> handleVeiculoIndisponivel(VeiculoIndisponivelException ex) {
-        ErroPadrao erro = new ErroPadrao();
-        erro.setCodigoErro(ErroCodigo.VEICULO_INDISPONIVEL.name());
-        erro.setDataHora(LocalDateTime.now());
-        erro.setMensagem(ex.getMessage());
-
-        return ResponseEntity
-                .status(HttpStatus.BAD_REQUEST)
-                .body(erro);
-    }
-
-    @ExceptionHandler(DataIntegrityViolationException.class)
-    public ResponseEntity<ErroPadrao> handleDataIntegrityViolation(DataIntegrityViolationException ex) {
-        ErroPadrao erroPadrao = new ErroPadrao();
-        erroPadrao.setCodigoErro(ErroCodigo.EMAIL_DUPLICADO.name());
-        erroPadrao.setDataHora(LocalDateTime.now());
-        erroPadrao.setMensagem("Email já cadastrado no sistema.");
-
-        return ResponseEntity
-                .status(HttpStatus.CONFLICT)
-                .body(erroPadrao);
-    }
 
     @ExceptionHandler({BadCredentialsException.class})
     public ResponseEntity<ErroPadrao> handleBadCredentials(BadCredentialsException ex) {

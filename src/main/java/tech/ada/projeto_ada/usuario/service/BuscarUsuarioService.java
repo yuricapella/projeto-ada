@@ -1,7 +1,7 @@
 package tech.ada.projeto_ada.usuario.service;
 
 import org.springframework.stereotype.Service;
-import tech.ada.projeto_ada.exception.UsuarioNaoEncontradoException;
+import tech.ada.projeto_ada.usuario.exception.UsuarioNaoEncontradoException;
 import tech.ada.projeto_ada.usuario.dto.UsuarioResponseDTO;
 import tech.ada.projeto_ada.usuario.dto.mapper.UsuarioResponseMapper;
 import tech.ada.projeto_ada.usuario.model.Usuario;

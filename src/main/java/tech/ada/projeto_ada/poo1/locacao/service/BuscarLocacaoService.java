@@ -1,7 +1,7 @@
 package tech.ada.projeto_ada.poo1.locacao.service;
 
 import org.springframework.stereotype.Service;
-import tech.ada.projeto_ada.exception.LocacaoNaoEncontradaException;
+import tech.ada.projeto_ada.poo1.locacao.exception.LocacaoNaoEncontradaException;
 import tech.ada.projeto_ada.poo1.locacao.model.Locacao;
 import tech.ada.projeto_ada.poo1.locacao.repository.LocacaoRepository;
 

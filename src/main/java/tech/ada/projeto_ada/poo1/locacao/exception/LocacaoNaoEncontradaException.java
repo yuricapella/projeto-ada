@@ -1,4 +1,4 @@
-package tech.ada.projeto_ada.exception;
+package tech.ada.projeto_ada.poo1.locacao.exception;
 
 public class LocacaoNaoEncontradaException extends RuntimeException{
     public LocacaoNaoEncontradaException(String mensagem) {

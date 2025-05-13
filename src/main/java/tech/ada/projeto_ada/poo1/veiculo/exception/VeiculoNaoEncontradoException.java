@@ -1,4 +1,4 @@
-package tech.ada.projeto_ada.exception;
+package tech.ada.projeto_ada.poo1.veiculo.exception;
 
 public class VeiculoNaoEncontradoException extends RuntimeException{
     public VeiculoNaoEncontradoException(String mensagem) {

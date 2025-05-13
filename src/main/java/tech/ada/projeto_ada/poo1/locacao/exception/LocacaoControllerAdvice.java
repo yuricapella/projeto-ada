@@ -1,11 +1,11 @@
-package tech.ada.projeto_ada.config;
+package tech.ada.projeto_ada.poo1.locacao.exception;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import tech.ada.projeto_ada.exception.ClienteNaoEncontradoException;
-import tech.ada.projeto_ada.exception.VeiculoIndisponivelException;
-import tech.ada.projeto_ada.exception.VeiculoNaoEncontradoException;
+import tech.ada.projeto_ada.poo1.cliente.exception.ClienteNaoEncontradoException;
+import tech.ada.projeto_ada.poo1.veiculo.exception.VeiculoIndisponivelException;
+import tech.ada.projeto_ada.poo1.veiculo.exception.VeiculoNaoEncontradoException;
 import tech.ada.projeto_ada.poo1.locacao.controller.LocacaoViewController;
 
 @ControllerAdvice(assignableTypes = LocacaoViewController.class)

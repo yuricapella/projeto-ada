@@ -1,7 +1,7 @@
 package tech.ada.projeto_ada.poo1.veiculo.service;
 
 import org.springframework.stereotype.Service;
-import tech.ada.projeto_ada.exception.VeiculoNaoEncontradoException;
+import tech.ada.projeto_ada.poo1.veiculo.exception.VeiculoNaoEncontradoException;
 import tech.ada.projeto_ada.poo1.veiculo.model.Veiculo;
 import tech.ada.projeto_ada.poo1.veiculo.repository.VeiculoRepository;
 

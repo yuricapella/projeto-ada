@@ -1,4 +1,4 @@
-package tech.ada.projeto_ada.exception;
+package tech.ada.projeto_ada.usuario.exception;
 
 public class UsuarioNaoEncontradoException extends RuntimeException{
     public UsuarioNaoEncontradoException(String mensagem) {

@@ -1,4 +1,4 @@
-package tech.ada.projeto_ada.exception;
+package tech.ada.projeto_ada.poo1.cliente.exception;
 
 public class ClienteNaoEncontradoException extends RuntimeException{
     public ClienteNaoEncontradoException(String mensagem) {
