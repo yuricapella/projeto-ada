@@ -15,6 +15,7 @@ public abstract class Veiculo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String modelo;
+    @Column(unique = true, nullable = false)
     private String placa;
     private double valorDiaria;
     private boolean disponivel;

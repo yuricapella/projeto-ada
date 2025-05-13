@@ -5,10 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import tech.ada.projeto_ada.poo1.veiculo.dto.api.AtualizarVeiculoRequestDTO;
-import tech.ada.projeto_ada.poo1.veiculo.dto.api.CriarVeiculoRequestDTO;
-import tech.ada.projeto_ada.poo1.veiculo.dto.api.mapper.CriarVeiculoRequestMapper;
-import tech.ada.projeto_ada.poo1.veiculo.dto.view.CriarVeiculoViewRequestDTO;
+import tech.ada.projeto_ada.poo1.veiculo.dto.AtualizarVeiculoRequestDTO;
+import tech.ada.projeto_ada.poo1.veiculo.dto.mapper.CriarVeiculoRequestMapper;
+import tech.ada.projeto_ada.poo1.veiculo.dto.CriarVeiculoRequestDTO;
 import tech.ada.projeto_ada.poo1.veiculo.model.Veiculo;
 import tech.ada.projeto_ada.poo1.veiculo.service.AtualizarVeiculoService;
 import tech.ada.projeto_ada.poo1.veiculo.service.BuscarVeiculoService;
@@ -44,7 +43,7 @@ public class VeiculoViewController {
 
     @GetMapping("/cadastrar")
     public String exibirFormularioCadastro(Model model) {
-        model.addAttribute("veiculo", new CriarVeiculoViewRequestDTO());
+        model.addAttribute("veiculo", new CriarVeiculoRequestDTO());
         model.addAttribute("tiposClasseVeiculo", TipoClasseVeiculo.values());
         model.addAttribute("tiposVeiculo", TipoVeiculo.values());
         return "poo1/veiculo/cadastrar";
@@ -52,7 +51,7 @@ public class VeiculoViewController {
 
     @PostMapping("/salvar")
     public String salvarVeiculo(
-            @ModelAttribute("veiculo") @Valid CriarVeiculoViewRequestDTO dto,
+            @ModelAttribute("veiculo") @Valid CriarVeiculoRequestDTO dto,
             BindingResult bindingResult,
             Model model) {
 

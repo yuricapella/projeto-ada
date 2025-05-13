@@ -1,12 +1,12 @@
-package tech.ada.projeto_ada.poo1.veiculo.dto.api.mapper;
+package tech.ada.projeto_ada.poo1.veiculo.dto.mapper;
 
-import tech.ada.projeto_ada.poo1.veiculo.dto.view.CriarVeiculoViewRequestDTO;
+import tech.ada.projeto_ada.poo1.veiculo.dto.CriarVeiculoRequestDTO;
 import tech.ada.projeto_ada.poo1.veiculo.model.Veiculo;
 import tech.ada.projeto_ada.poo1.veiculo.util.TipoClasseVeiculo;
 
 public class CriarVeiculoRequestMapper {
 
-    public static Veiculo toEntity(CriarVeiculoViewRequestDTO dto) {
+    public static Veiculo toEntity(CriarVeiculoRequestDTO dto) {
         try {
             Class<?> classeVeiculo = TipoClasseVeiculo.valueOf(dto.getTipoClasse().name()).getClasse();
 

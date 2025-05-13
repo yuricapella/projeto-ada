@@ -36,8 +36,7 @@ public class SecurityConfig {
                         "/swagger.html", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/usuarios").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/poo1/clientes").permitAll()
-                .requestMatchers("/api/usuarios/**").authenticated()
-                .requestMatchers("/api/poo1/clientes/**").authenticated()
+                .requestMatchers(HttpMethod.POST, "/api/poo1/veiculos").permitAll()
                 .anyRequest().authenticated()
             )
             .formLogin(form -> form

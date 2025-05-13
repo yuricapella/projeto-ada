@@ -1,6 +1,6 @@
-package tech.ada.projeto_ada.poo1.veiculo.dto.api.mapper;
+package tech.ada.projeto_ada.poo1.veiculo.dto.mapper;
 
-import tech.ada.projeto_ada.poo1.veiculo.dto.api.VeiculoResponseDTO;
+import tech.ada.projeto_ada.poo1.veiculo.dto.VeiculoResponseDTO;
 import tech.ada.projeto_ada.poo1.veiculo.model.Veiculo;
 
 public class VeiculoResponseMapper {
