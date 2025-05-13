@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import tech.ada.projeto_ada.exception.ErroCodigo;
 import tech.ada.projeto_ada.exception.ErroPadrao;
 import tech.ada.projeto_ada.exception.UsuarioNaoEncontradoException;
+import tech.ada.projeto_ada.exception.VeiculoIndisponivelException;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -30,6 +31,18 @@ public class ControllerAdviceRest {
         return ResponseEntity
                 .status(HttpStatus.NOT_FOUND)
                 .body(erroPadrao);
+    }
+
+    @ExceptionHandler(VeiculoIndisponivelException.class)
+    public ResponseEntity<ErroPadrao> handleVeiculoIndisponivel(VeiculoIndisponivelException ex) {
+        ErroPadrao erro = new ErroPadrao();
+        erro.setCodigoErro(ErroCodigo.VEICULO_INDISPONIVEL.name());
+        erro.setDataHora(LocalDateTime.now());
+        erro.setMensagem(ex.getMessage());
+
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(erro);
     }
 
     @ExceptionHandler(DataIntegrityViolationException.class)

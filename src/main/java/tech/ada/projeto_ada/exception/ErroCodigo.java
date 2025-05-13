@@ -6,4 +6,5 @@ public enum ErroCodigo {
     DATA_INVALIDA,
     EMAIL_DUPLICADO,
     REQUISICAO_INVALIDA,
+    VEICULO_INDISPONIVEL,
 }

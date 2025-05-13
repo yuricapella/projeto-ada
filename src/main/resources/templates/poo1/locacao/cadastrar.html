@@ -12,6 +12,16 @@
     <main>
         <section class="form-section">
             <h2>Nova Locação</h2>
+
+            <div th:if="${erroVeiculoIndisponivel}" class="error-message">
+                <p th:text="${erroVeiculoIndisponivel}"></p>
+            </div>
+            <div th:if="${erroVeiculoNaoEncontrado}" class="error-message">
+                <p th:text="${erroVeiculoNaoEncontrado}"></p>
+            </div>
+            <div th:if="${erroClienteNaoEncontrado}" class="error-message">
+                <p th:text="${erroClienteNaoEncontrado}"></p>
+            </div>
             <form th:action="@{/poo1/locacao/salvar}" th:object="${locacao}" method="post">
 
                 <div class="form-group">

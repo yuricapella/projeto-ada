@@ -5,6 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import tech.ada.projeto_ada.exception.ClienteNaoEncontradoException;
+import tech.ada.projeto_ada.exception.VeiculoIndisponivelException;
+import tech.ada.projeto_ada.exception.VeiculoNaoEncontradoException;
 import tech.ada.projeto_ada.poo1.locacao.dto.AtualizarLocacaoRequestDTO;
 import tech.ada.projeto_ada.poo1.locacao.model.Locacao;
 import tech.ada.projeto_ada.poo1.locacao.service.*;
@@ -56,12 +59,24 @@ public class LocacaoViewController {
             return "poo1/locacao/cadastrar";
         }
 
-        criarLocacaoService.criarLocacao(
-                dto.getVeiculoId(),
-                dto.getClienteId(),
-                dto.getDiasDeLocacao()
-        );
-        return "redirect:/poo1/locacao/listar";
+        try {
+            criarLocacaoService.criarLocacao(
+                    dto.getVeiculoId(),
+                    dto.getClienteId(),
+                    dto.getDiasDeLocacao()
+            );
+            return "redirect:/poo1/locacao/listar";
+
+        } catch (VeiculoIndisponivelException e) {
+            model.addAttribute("erroVeiculoIndisponivel", e.getMessage());
+            return "poo1/locacao/cadastrar";
+        } catch (VeiculoNaoEncontradoException e) {
+            model.addAttribute("erroVeiculoNaoEncontrado", e.getMessage());
+            return "poo1/locacao/cadastrar";
+        } catch (ClienteNaoEncontradoException e) {
+            model.addAttribute("erroClienteNaoEncontrado", e.getMessage());
+            return "poo1/locacao/cadastrar";
+        }
     }
 
     @GetMapping("/atualizar/{id}")
