@@ -6,7 +6,7 @@ public class LocacaoNaoEncontradaException extends RuntimeException{
     }
 
     public LocacaoNaoEncontradaException(Long id) {
-        super("Locação com id " + id + " não encontrado.");
+        super("Locação com id " + id + " não encontrada.");
     }
 
 }

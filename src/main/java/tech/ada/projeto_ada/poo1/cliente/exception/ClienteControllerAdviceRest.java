@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import tech.ada.projeto_ada.exception.ErroCodigo;
 import tech.ada.projeto_ada.exception.ErroPadrao;
 import tech.ada.projeto_ada.poo1.cliente.controller.ClienteApiController;
-import tech.ada.projeto_ada.usuario.exception.UsuarioNaoEncontradoException;
 
 import java.time.LocalDateTime;
 
