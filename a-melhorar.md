@@ -22,3 +22,8 @@ locações canceladas ou finalizadas nao aparecem na lista de locações.
 colocar verificação de cpf ou cnpj em cliente para nao deixar criar o mesmo
 fazer uma verificação se for tipo CPF, só pode 11 digitos, se for tipo CNPJ, só pode 14 digitos
 ---------------------
+ter validações de, nao poder excluir cliente e nem veiculo se eles já tiverem locações ativas.
+------------
+se eu tento atualizar veiculo com a mesma placa da erro de duplicado,
+-----------
+colocar tratamento de exceção para veiculo na view, placa duplicada da white label page
