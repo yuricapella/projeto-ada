@@ -11,11 +11,11 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/logica-programacao")
-public class SalaryController {
+public class SalaryViewController {
 
     private final SalaryService salaryService;
 
-    public SalaryController() {
+    public SalaryViewController() {
         this.salaryService = new SalaryService();
     }
 
@@ -42,6 +42,7 @@ public class SalaryController {
         }
 
         model.addAttribute("salaries", salaryList);
+        model.addAttribute("dependentes", dependentes);
         return "logica_programacao/result";
     }
 }
