@@ -22,11 +22,11 @@ public class VeiculoDataInitializer {
     CommandLineRunner initVeiculos(VeiculoRepository repository) {
         return args -> {
             List<Veiculo> veiculos = gerarVeiculos(
-                    3,
-                    3,
-                    4,
-                    2,
-                    3
+                    1,
+                    1,
+                    1,
+                    1,
+                    1
             );
 
             repository.saveAll(veiculos);
