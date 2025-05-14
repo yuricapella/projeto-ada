@@ -38,6 +38,7 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.POST, "/api/poo1/clientes").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/poo1/veiculos").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/poo1/locacao").permitAll()
+                .requestMatchers(HttpMethod.POST, "/api/logica-programacao/salarios").permitAll()
                 .anyRequest().authenticated()
             )
             .formLogin(form -> form
