@@ -27,3 +27,9 @@ ter validações de, nao poder excluir cliente e nem veiculo se eles já tiverem
 se eu tento atualizar veiculo com a mesma placa da erro de duplicado,
 -----------
 colocar tratamento de exceção para veiculo na view, placa duplicada da white label page
+
+----
+adicionar filtragem em numero de cliente ou até outro campo só para dd do telefone mas enfim
+telefone tem 11 digitos no total, daria para fazer alguma conversão para mostrar (11) 99999-9999, mesmo salvando 11999999999
+colocar também min e maximo de 11 digitos na validação
+---------

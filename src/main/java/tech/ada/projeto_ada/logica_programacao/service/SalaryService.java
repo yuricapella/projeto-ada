@@ -1,5 +1,6 @@
 package tech.ada.projeto_ada.logica_programacao.service;
 
+import tech.ada.projeto_ada.logica_programacao.exception.SalarioInvalidoException;
 import tech.ada.projeto_ada.logica_programacao.model.Salary;
 import tech.ada.projeto_ada.logica_programacao.util.TabelaDescontosInss;
 import tech.ada.projeto_ada.logica_programacao.util.TabelaDescontosImpostoDeRenda;
@@ -11,6 +12,9 @@ public class SalaryService {
 
     public void calcularDescontos(Salary salario) {
         double salarioBruto = salario.getSalarioBruto();
+        if (salarioBruto <= 0) {
+            throw new SalarioInvalidoException(salarioBruto);
+        }
         int dependentes = salario.getNumeroDependentes();
 
         double descontoInss = calcularDescontoInss(salarioBruto);
