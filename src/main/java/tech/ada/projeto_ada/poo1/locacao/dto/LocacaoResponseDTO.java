@@ -1,6 +1,6 @@
 package tech.ada.projeto_ada.poo1.locacao.dto;
 
-public class LocacaoDTO {
+public class LocacaoResponseDTO {
 
     private Long veiculoId;
     private Long clienteId;
