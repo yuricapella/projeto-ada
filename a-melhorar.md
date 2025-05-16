@@ -33,3 +33,10 @@ adicionar filtragem em numero de cliente ou até outro campo só para dd do tele
 telefone tem 11 digitos no total, daria para fazer alguma conversão para mostrar (11) 99999-9999, mesmo salvando 11999999999
 colocar também min e maximo de 11 digitos na validação
 ---------
+criar classes de validação para ter regras de negocio na service e também ter mais testes
+exemplo: ValidadorUsuario  com metodos que validam nome,email,senha, igual as validações do dto.
+Verificar se é necessário criar exceções para cada tipo de atributo, nome invalido ou nome nulo, nome vazio
+ou talvez só chamar o methodargumentnotvalid ou com esses nomes especificos extender dele, muitas possibilidades.
+
+focar em entregar todos os testes como o projeto está atualmente, depois se sobrar tempo fazer teste de interface com selenium
+e se ainda tiver tempo, colocar as validações para entregar testes com melhor boa pratica.
