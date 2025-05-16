@@ -63,14 +63,7 @@ class CriarUsuarioServiceTest {
         inOrder.verify(passwordEncoder, Mockito.times(1)).encode(senhaOriginal);
         inOrder.verify(repository, Mockito.times(1)).save(Mockito.any(Usuario.class));
 
-        System.out.printf(
-                "Usuário criado => ID: %-3d | Nome: %-10s | Email: %-20s | Senha: %-20s | Criado em: %s%n",
-                usuarioCriado.getId(),
-                usuarioCriado.getNome(),
-                usuarioCriado.getEmail(),
-                usuarioCriado.getSenha(),
-                usuarioCriado.getDataCriacao()
-        );
+        printUsuario(usuarioCriado);
     }
 
     @Test
@@ -89,5 +82,19 @@ class CriarUsuarioServiceTest {
         Mockito.verify(repository, Mockito.times(1)).existsByEmail(usuario.getEmail());
 
         System.out.println("Erro lançado: " + exception.getMessage());
+    }
+
+
+    private void printUsuario(Usuario usuario){
+        System.out.printf(
+                "Usuário criado => ID: %d | Nome: %s | Email: %s | Senha: %s | Criado em: %s%n" +
+                        "Atualizado em: %s%n",
+                usuario.getId(),
+                usuario.getNome(),
+                usuario.getEmail(),
+                usuario.getSenha(),
+                usuario.getDataCriacao(),
+                usuario.getDataAtualizacao()
+        );
     }
 }
