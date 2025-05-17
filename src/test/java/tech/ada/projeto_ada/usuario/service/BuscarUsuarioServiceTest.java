@@ -8,6 +8,7 @@ import tech.ada.projeto_ada.usuario.dto.UsuarioResponseDTO;
 import tech.ada.projeto_ada.usuario.exception.UsuarioNaoEncontradoException;
 import tech.ada.projeto_ada.usuario.model.Usuario;
 import tech.ada.projeto_ada.usuario.repository.UsuarioRepository;
+import tech.ada.projeto_ada.usuario.util.TestUsuarioPrinter;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,18 +21,14 @@ class BuscarUsuarioServiceTest {
     UsuarioRepository repository;
 
     @BeforeEach
-    public void setUp() {
+    void setUp(TestInfo testInfo) {
+        TestUsuarioPrinter.printInicioDoTeste(testInfo.getDisplayName());
         repository = Mockito.mock(UsuarioRepository.class);
         service = new BuscarUsuarioService(repository);
     }
 
-    @BeforeEach
-    void logInicio(TestInfo testInfo) {
-        System.out.println("==> Iniciando teste: " + testInfo.getDisplayName());
-    }
-
     @Test
-    void deveRetornarUsuarioBuscardoPorIdComSucesso(){
+    void deveRetornarUsuarioBuscadoPorIdComSucesso(){
         Long id = 1L;
         Usuario usuario = new Usuario();
         usuario.setId(id);
@@ -45,7 +42,7 @@ class BuscarUsuarioServiceTest {
         assertEquals(id, usuarioRetornado.getId());
         assertEquals("Yuri", usuarioRetornado.getNome());
 
-        System.out.printf("Usuario encontrado: %s, com id %d\n",usuarioRetornado.getNome(), usuarioRetornado.getId());
+        TestUsuarioPrinter.printUsuarioEncontrado(usuarioRetornado);
     }
 
     @Test
@@ -60,16 +57,16 @@ class BuscarUsuarioServiceTest {
 
         assertNotNull(exception);
         assertEquals("Usuário com id " + id + " não encontrado.", exception.getMessage());
-        verify(repository, times(1)).findById(id);
 
-        System.out.println("Erro lançado: " + exception.getMessage());
+        Mockito.verify(repository, times(1)).findById(id);
+
+        TestUsuarioPrinter.printMensagemDeErro(exception.getMessage());
     }
 
     @Test
     void deveRetornarTodosOsUsuariosComSucesso() {
         Usuario usuario1 = new Usuario();
         usuario1.setNome("Yuri");
-
         Usuario usuario2 = new Usuario();
         usuario2.setNome("Ana");
 
@@ -79,11 +76,10 @@ class BuscarUsuarioServiceTest {
 
         assertNotNull(usuariosDTORetornados);
         assertEquals(2, usuariosDTORetornados.size());
-        verify(repository, times(1)).findAll();
 
-        usuariosDTORetornados.stream()
-                .map(UsuarioResponseDTO::getNome)
-                .forEach(System.out::println);
+        Mockito.verify(repository, times(1)).findAll();
+
+        TestUsuarioPrinter.printUsuariosResponse("Usuários encontrados", usuariosDTORetornados);
     }
 
 }

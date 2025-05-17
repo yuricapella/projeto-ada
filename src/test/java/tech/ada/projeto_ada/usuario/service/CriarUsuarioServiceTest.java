@@ -9,6 +9,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import tech.ada.projeto_ada.usuario.model.Usuario;
 import tech.ada.projeto_ada.usuario.repository.UsuarioRepository;
+import tech.ada.projeto_ada.usuario.util.TestUsuarioPrinter;
 
 import java.time.LocalDateTime;
 
@@ -20,15 +21,11 @@ class CriarUsuarioServiceTest {
     CriarUsuarioService service;
 
     @BeforeEach
-    void setup(){
+    void setup(TestInfo testInfo){
+        TestUsuarioPrinter.printInicioDoTeste(testInfo.getDisplayName());
         repository = Mockito.mock(UsuarioRepository.class);
         passwordEncoder = Mockito.mock(PasswordEncoder.class);
         service = new CriarUsuarioService(repository, passwordEncoder);
-    }
-
-    @BeforeEach
-    void logInicio(TestInfo testInfo) {
-        System.out.println("==> Iniciando teste: " + testInfo.getDisplayName());
     }
 
     @Test
@@ -38,16 +35,12 @@ class CriarUsuarioServiceTest {
 
         String senhaOriginal = usuario.getSenha();
         String senhaCriptografada = "senha_criptografada";
-
-        Mockito.when(passwordEncoder.encode(usuario.getSenha())).thenReturn(senhaCriptografada);
-
         Usuario usuarioComSenhaCriptografada = new Usuario("Yuri","yuri@yuri.com",senhaCriptografada);
         usuarioComSenhaCriptografada.setId(id);
         usuarioComSenhaCriptografada.setDataCriacao(LocalDateTime.now());
 
-        Mockito.when(repository.save(Mockito.any(Usuario.class)))
-                .thenReturn(usuarioComSenhaCriptografada);
-
+        Mockito.when(passwordEncoder.encode(usuario.getSenha())).thenReturn(senhaCriptografada);
+        Mockito.when(repository.save(Mockito.any(Usuario.class))).thenReturn(usuarioComSenhaCriptografada);
 
         Usuario usuarioCriado = service.criarUsuario(usuario);
 
@@ -57,13 +50,15 @@ class CriarUsuarioServiceTest {
         assertEquals("Yuri", usuarioCriado.getNome());
         assertEquals("yuri@yuri.com", usuarioCriado.getEmail());
         assertEquals(senhaCriptografada, usuarioCriado.getSenha());
+
         Mockito.verify(repository, Mockito.times(1)).save(Mockito.any(Usuario.class));
         Mockito.verify(passwordEncoder, Mockito.times(1)).encode(senhaOriginal);
+
         InOrder inOrder = Mockito.inOrder(passwordEncoder,repository);
         inOrder.verify(passwordEncoder, Mockito.times(1)).encode(senhaOriginal);
         inOrder.verify(repository, Mockito.times(1)).save(Mockito.any(Usuario.class));
 
-        printUsuario(usuarioCriado);
+        TestUsuarioPrinter.printUsuarioCriado(usuarioCriado);
     }
 
     @Test
@@ -79,22 +74,10 @@ class CriarUsuarioServiceTest {
 
         assertNotNull(exception);
         assertEquals("Email já cadastrado", exception.getMessage());
+
         Mockito.verify(repository, Mockito.times(1)).existsByEmail(usuario.getEmail());
 
-        System.out.println("Erro lançado: " + exception.getMessage());
+        TestUsuarioPrinter.printMensagemDeErro(exception.getMessage());
     }
 
-
-    private void printUsuario(Usuario usuario){
-        System.out.printf(
-                "Usuário criado => ID: %d | Nome: %s | Email: %s | Senha: %s | Criado em: %s%n" +
-                        "Atualizado em: %s%n",
-                usuario.getId(),
-                usuario.getNome(),
-                usuario.getEmail(),
-                usuario.getSenha(),
-                usuario.getDataCriacao(),
-                usuario.getDataAtualizacao()
-        );
-    }
 }

@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import tech.ada.projeto_ada.usuario.model.Usuario;
 import tech.ada.projeto_ada.usuario.repository.UsuarioRepository;
+import tech.ada.projeto_ada.usuario.util.TestUsuarioPrinter;
 
 import java.util.Optional;
 
@@ -18,15 +19,12 @@ class UserDetailsServiceImplTest {
     UserDetailsServiceImpl service;
 
     @BeforeEach
-    void setUp() {
+    void setUp(TestInfo testInfo) {
+        TestUsuarioPrinter.printInicioDoTeste(testInfo.getDisplayName());
         repository = Mockito.mock(UsuarioRepository.class);
         service = new UserDetailsServiceImpl(repository);
     }
 
-    @BeforeEach
-    void logInicio(TestInfo testInfo) {
-        System.out.println("==> Iniciando teste: " + testInfo.getDisplayName());
-    }
 
     @Test
     void deveBuscarUsuarioPorEmailERetornarUserDetailsComSucesso() {
@@ -37,15 +35,15 @@ class UserDetailsServiceImplTest {
 
         UserDetails userDetails = service.loadUserByUsername(email);
 
-
         assertNotNull(userDetails);
         assertEquals(email, userDetails.getUsername());
         assertEquals("senha123", userDetails.getPassword());
         assertTrue(userDetails.getAuthorities().stream()
                 .anyMatch(auth -> auth.getAuthority().equals("USER")));
+
         Mockito.verify(repository, Mockito.times(1)).findByEmailIgnoreCase(usuario.getEmail());
 
-        printUserDetails(userDetails);
+        TestUsuarioPrinter.printUserDetails(userDetails);
     }
 
     @Test
@@ -59,22 +57,9 @@ class UserDetailsServiceImplTest {
 
         assertNotNull(exception);
         assertEquals("Usuário não encontrado com o email: " + email, exception.getMessage());
+
         Mockito.verify(repository, Mockito.times(1)).findByEmailIgnoreCase(email);
 
-        System.out.println("Erro lançado: " + exception.getMessage());
+        TestUsuarioPrinter.printMensagemDeErro(exception.getMessage());
     }
-
-
-    private void printUserDetails(UserDetails userDetails) {
-        System.out.printf(
-                "UserDetails => Username: %s | Password: %s | Authorities: %s%n",
-                userDetails.getUsername(),
-                userDetails.getPassword(),
-                userDetails.getAuthorities()
-                        .stream()
-                        .map(auth -> auth.getAuthority())
-                        .toList()
-        );
-    }
-
 }

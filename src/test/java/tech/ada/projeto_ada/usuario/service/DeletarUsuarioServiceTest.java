@@ -9,7 +9,7 @@ import org.mockito.Mockito;
 import tech.ada.projeto_ada.usuario.exception.UsuarioNaoEncontradoException;
 import tech.ada.projeto_ada.usuario.model.Usuario;
 import tech.ada.projeto_ada.usuario.repository.UsuarioRepository;
-
+import tech.ada.projeto_ada.usuario.util.TestUsuarioPrinter;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -21,17 +21,12 @@ class DeletarUsuarioServiceTest {
     UsuarioRepository repositoryMock;
 
     @BeforeEach
-    public void setUp(){
+    void setUp(TestInfo testInfo){
+        TestUsuarioPrinter.printInicioDoTeste(testInfo.getDisplayName());
         repositoryMock = Mockito.mock(UsuarioRepository.class);
         buscarServiceMock = Mockito.mock(BuscarUsuarioService.class);
         deletarService = new DeletarUsuarioService(buscarServiceMock,repositoryMock);
     }
-
-    @BeforeEach
-    void logInicio(TestInfo testInfo) {
-        System.out.println("==> Iniciando teste: " + testInfo.getDisplayName());
-    }
-
 
     @Test
     void deveEncontrarUsuarioPorIdNoBancoDeDadosEExcluilo(){
@@ -44,11 +39,12 @@ class DeletarUsuarioServiceTest {
         Mockito.when(buscarServiceMock.buscarUsuarioPorId(id)).thenReturn(usuario);
         Mockito.verify(buscarServiceMock,Mockito.times(1)).buscarUsuarioPorId(id);
         Mockito.verify(repositoryMock, Mockito.times(1)).deleteById(id);
+
         InOrder inOrder = Mockito.inOrder(buscarServiceMock,repositoryMock);
         inOrder.verify(buscarServiceMock, Mockito.times(1)).buscarUsuarioPorId(id);
         inOrder.verify(repositoryMock,Mockito.times(1)).deleteById(id);
 
-        System.out.printf("Usuario com id %d deletado!\n", usuario.getId());
+        TestUsuarioPrinter.printUsuarioDeletado(usuario);
     }
 
     @Test
@@ -63,11 +59,11 @@ class DeletarUsuarioServiceTest {
 
         Assertions.assertNotNull(exception);
         assertEquals("Usuário com id " + id + " não encontrado.", exception.getMessage());
+
         Mockito.verify(buscarServiceMock,Mockito.times(1)).buscarUsuarioPorId(id);
         Mockito.verify(repositoryMock, never()).deleteById(any());
 
-        System.out.println("Erro lançado: " + exception.getMessage());
-
+        TestUsuarioPrinter.printMensagemDeErro(exception.getMessage());
     }
 
 }
