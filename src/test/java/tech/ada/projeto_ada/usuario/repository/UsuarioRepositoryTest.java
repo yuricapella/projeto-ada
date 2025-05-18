@@ -16,6 +16,7 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@ActiveProfiles("dev")
 @DataJpaTest
 class UsuarioRepositoryTest {
     @Autowired
