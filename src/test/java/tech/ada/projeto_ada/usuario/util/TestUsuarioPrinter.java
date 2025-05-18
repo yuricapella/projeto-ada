@@ -65,4 +65,11 @@ public final class TestUsuarioPrinter {
             System.out.printf("  - Nome: %s | Email: %s%n", usuario.getNome(), usuario.getEmail());
         }
     }
+
+    public static void printUsuarios(String titulo, Iterable<Usuario> usuarios) {
+        System.out.println(titulo + ":");
+        for (Usuario usuario : usuarios) {
+            System.out.printf("  - Nome: %s | Email: %s%n", usuario.getNome(), usuario.getEmail());
+        }
+    }
 }
