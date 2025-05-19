@@ -25,6 +25,7 @@ import tech.ada.projeto_ada.usuario.service.AtualizarUsuarioService;
 import tech.ada.projeto_ada.usuario.service.BuscarUsuarioService;
 import tech.ada.projeto_ada.usuario.service.CriarUsuarioService;
 import tech.ada.projeto_ada.usuario.service.DeletarUsuarioService;
+import tech.ada.projeto_ada.util.JsonUtil;
 
 import java.util.List;
 
@@ -55,7 +56,6 @@ class UsuarioApiControllerTest {
         mockMvc = MockMvcBuilders.standaloneSetup(controller)
                 .setControllerAdvice(new ControllerAdviceRest(), new UsuarioControllerAdviceRest())
                 .build();
-
     }
 
     @Test
@@ -69,7 +69,7 @@ class UsuarioApiControllerTest {
         mockMvc.perform(get(PATH)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().is(HttpStatus.OK.value()))
-                .andExpect(content().json(asJsonString(usuariosRetornados)))
+                .andExpect(content().json(JsonUtil.asJsonString(usuariosRetornados)))
                 .andDo(MockMvcResultHandlers.print());
 
         Mockito.verify(buscarService, Mockito.times(1)).buscarTodosUsuarios();
@@ -87,7 +87,7 @@ class UsuarioApiControllerTest {
         mockMvc.perform(get(PATH_COM_ID,id)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().is(HttpStatus.OK.value()))
-                .andExpect(content().json(asJsonString(usuario)))
+                .andExpect(content().json(JsonUtil.asJsonString(usuario)))
                 .andDo(MockMvcResultHandlers.print());
 
         Mockito.verify(buscarService, Mockito.times(1)).buscarUsuarioPorId(id);
@@ -118,9 +118,9 @@ class UsuarioApiControllerTest {
 
         mockMvc.perform(post(PATH)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(asJsonString(usuarioRequestDTO)))
+                .content(JsonUtil.asJsonString(usuarioRequestDTO)))
                 .andExpect(status().is(HttpStatus.CREATED.value()))
-                .andExpect(content().json(asJsonString(usuarioCriado)))
+                .andExpect(content().json(JsonUtil.asJsonString(usuarioCriado)))
                 .andDo(MockMvcResultHandlers.print());
     }
 
@@ -133,7 +133,7 @@ class UsuarioApiControllerTest {
 
         mockMvc.perform(post(PATH)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(asJsonString(usuarioRequestDTO)))
+                .content(JsonUtil.asJsonString(usuarioRequestDTO)))
                 .andExpect(status().is(HttpStatus.BAD_REQUEST.value()))
                 .andDo(MockMvcResultHandlers.print());
     }
@@ -148,7 +148,7 @@ class UsuarioApiControllerTest {
 
         mockMvc.perform(put(PATH_COM_ID, id)
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(asJsonString(usuarioDTO)))
+                        .content(JsonUtil.asJsonString(usuarioDTO)))
                 .andExpect(status().isOk())
                 .andDo(print());
 
@@ -170,16 +170,4 @@ class UsuarioApiControllerTest {
 
         Mockito.verify(deletarService, Mockito.times(1)).deletarUsuarioPorId(id);
     }
-
-    private static String asJsonString(Object object) {
-        try {
-            ObjectMapper mapper = new ObjectMapper()
-                    .findAndRegisterModules()
-                    .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-            return mapper.writeValueAsString(object);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException("Não foi possível mapear o objeto para Json", e);
-        }
-    }
-
 }
