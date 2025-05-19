@@ -49,4 +49,16 @@ pode ter dependencias diferentes e demorar mais que os testes unitários geralme
 - até o momento só consegui colocar no teste de usuario repository.
 ----------
 usar aquele tipo de teste que roda com varios argumentos, parametrized test? em teste de badrequest para testar mais cenarios
-----------
+
+
+
+
+
+
+
+
+---------- BOAS PRATICAS ------------
+para controller, foi adicionado   .setControllerAdvice() em mockMvc para tratamento de erros com o controller advice, 
+no caso do usuario, usei o padrao e o especifico de usuario.
+mockMvc = MockMvcBuilders.standaloneSetup(controller).setControllerAdvice(new ControllerAdviceRest(), new UsuarioControllerAdviceRest()).build();
+
