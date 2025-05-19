@@ -4,14 +4,15 @@ import jakarta.validation.constraints.*;
 
 public class CriarUsuarioRequestDTO {
 
-    @NotBlank(message = "Nome não pode ser nulo.")
+    @NotBlank(message = "Nome não pode ser vazio ou nulo.")
     @Size(min = 3, message = "Nome deve conter no mínimo 3 letras.")
     private String nome;
 
+    @NotBlank(message = "Email não pode ser vazio ou nulo.")
     @Email(message = "Email está fora do padrão.")
     private String email;
 
-    @NotBlank(message = "Senha não pode ser nula.")
+    @NotBlank(message = "Senha não pode ser vazio ou nulo.")
     @Size(min = 8, message = "Senha deve conter no mínimo 8 dígitos.")
     private String senha;
 

@@ -41,8 +41,12 @@ ou talvez só chamar o methodargumentnotvalid ou com esses nomes especificos ext
 focar em entregar todos os testes como o projeto está atualmente, depois se sobrar tempo fazer teste de interface com selenium
 e se ainda tiver tempo, colocar as validações para entregar testes com melhor boa pratica.
 ----------
-
+-colocar checklist-
 Verificar como criar profiles para separar produção e testes.
 Parece que repository tem que ter uma profile diferente também pois 
 pode ter dependencias diferentes e demorar mais que os testes unitários geralmente.
+- pelo que verifiquei apenas quando usa @SpringTestBoot ou @DataJPATest algo assim para poder colocar @activeprofile e separar
+- até o momento só consegui colocar no teste de usuario repository.
+----------
+usar aquele tipo de teste que roda com varios argumentos, parametrized test? em teste de badrequest para testar mais cenarios
 ----------
