@@ -19,7 +19,8 @@ public class TestClientPrinter {
     public static void printCliente(String titulo, Cliente cliente) {
         System.out.println(titulo + ":");
         System.out.printf(
-            "  - Nome: %s | Documento: %s | Endereço: %s | Telefone: %s%n",
+            "  - ID: %s | Nome: %s | Documento: %s | Endereço: %s | Telefone: %s%n",
+            cliente.getId(),
             cliente.getNome(),
             cliente.getDocumento(),
             cliente.getEndereco(),
