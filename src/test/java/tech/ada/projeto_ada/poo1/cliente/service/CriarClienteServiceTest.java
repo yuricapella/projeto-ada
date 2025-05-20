@@ -7,7 +7,6 @@ import org.mockito.Mockito;
 import tech.ada.projeto_ada.poo1.cliente.model.Cliente;
 import tech.ada.projeto_ada.poo1.cliente.repository.ClienteRepository;
 import tech.ada.projeto_ada.poo1.cliente.util.ClienteCreator;
-import tech.ada.projeto_ada.poo1.cliente.util.TestClientPrinter;
 import tech.ada.projeto_ada.util.TestPrinter;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -40,7 +39,5 @@ class CriarClienteServiceTest {
         assertEquals(cliente.getDataAtualizacao(), clienteCriado.getDataAtualizacao());
         assertEquals(cliente.getId(), clienteCriado.getId());
         Mockito.verify(clienteRepository, Mockito.times(1)).save(cliente);
-
-        TestClientPrinter.printCliente("Cliente criado", clienteCriado);
     }
 }
