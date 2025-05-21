@@ -1,10 +1,9 @@
-# 📘 Guia de Uso
-
+<a id="voltar-ao-topo"></a>
 [⬅ Voltar ao README](README.md)
 
----
+# 📘 Guia de Uso
 
-## 📬 1. Acesso à Collection do Postman
+## 📬 Acesso à Collection do Postman
 
 🔗 [Acessar Collection](https://yuricapella.postman.co/workspace/Yuri-Capella's-Workspace~eed12cec-649d-4622-8f2c-fee779577473/collection/43702238-1bf00d63-906d-4f84-83f7-46e258bf48d8?share=true&origin=sidebar)  
 📁 [Baixar Collection JSON](https://github.com/yuricapella/projeto-ada/blob/testes-a-entregar/postman/projeto_ada.postman_collection.json)
@@ -13,7 +12,7 @@ Importe no Postman: `Import` ▶ `File`.
 
 ---
 
-## 🌐 2. Endpoints da API
+## 🌐 Endpoints da API
 
 Base URL: `http://localhost:8080`
 
@@ -52,7 +51,7 @@ Base URL: `http://localhost:8080`
 | Locação    | DELETE | /api/poo1/locacao/{id}             | Deletar locação               |
 ---
 
-## 👤 Usuários Padrão (pré-cadastrados)
+# 👤 Usuários Padrão (pré-cadastrados) - autenticação via login no site e basic auth no postman.
 
 Local: `config/inicializar/UsuarioDataInitializer`
 
@@ -79,6 +78,7 @@ POST `http://localhost:8080/api/usuarios`
 ```
 
 ---
+# 💰 Locação de veículos (POO1)
 
 ## 👥 Clientes Padrão (pré-cadastrados)
 
@@ -158,7 +158,7 @@ POST `http://localhost:8080/api/locacoes`
 ```
 
 --- 
-## 💰 API de Cálculo de Salários (Lógica de Programação)
+# 💰 Cálculo de Salários (Lógica de Programação)
 
 Base URL: `http://localhost:8080/api/logica-programacao`
 
@@ -177,7 +177,7 @@ Base URL: `http://localhost:8080/api/logica-programacao`
 - Sem dependentes (padrão):  
   `http://localhost:8080/api/logica-programacao/salarios`
 
-### 7.2 Formato JSON para requisição
+### Formato JSON para requisição
 
 Você pode enviar **um único salário** ou **uma lista de salários**:
 
@@ -242,7 +242,7 @@ mvn test
 
 * API REST funcional com tratamento de erros
 * Módulos `logica-programacao` e `poo1` refatorados e concluídos
-* Testes unitários criados e organizados por camada (repository, service, controller)
-* Arquivos Postman incluídos para facilitar testes manuais
+* Testes criados e organizados por camada (repository, service, controller)
+* Arquivo Postman incluído para facilitar testes manuais
 
 [🔝 Voltar ao topo](#voltar-ao-topo)
