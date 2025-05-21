@@ -28,13 +28,29 @@ Este repositório contém o **Projeto de Conclusão do Módulo de Testes Automat
 
 ## 🔍 Testes Automatizados
 
-Este projeto possui testes nas principais camadas da aplicação para garantir a qualidade e o correto funcionamento.
+*Este projeto possui testes nas principais camadas da aplicação para garantir a qualidade e o correto funcionamento.*
+
+
+### Testes de Interface (Selenium)
+
+Esses testes percorrem os principais fluxos de uso da aplicação via navegador Chrome:
+
+| Classe / Arquivo             | Descrição                                                                                                        |
+| ---------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| **LoginTest.java**           | Verifica login bem-sucedido (`loginComSucesso`) e falha com credenciais inválidas, validando mensagens.          |
+| **CadastroTest.java**        | Testa cadastro de usuário: sucesso ao preencher campos válidos e falha ao usar senhas diferentes.                |
+| **CalcularSalarioTest.java** | Valida o fluxo da calculadora de IR: acesso via menu, submissão de salário (com e sem dependentes) e resultados. |
+| **ClienteTest.java**         | Exercita CRUD de clientes via UI: listagem, criação, edição (pré-preenchimento) e exclusão com confirmação.      |
+
+---
 
 ### Testes de Repository
 **Arquivo:** `UsuarioRepositoryTest.java`  
 Cobrem operações básicas (salvar, buscar, atualizar, deletar) e consultas customizadas.  
 Validam constraints do banco e o comportamento do JPA.  
 **Exemplo:** Testa se um usuário válido é salvo e recuperado com sucesso.
+
+---
 
 ### Testes de Service
 **Arquivo:** `AtualizarUsuarioServiceTest.java`  
@@ -43,6 +59,8 @@ Verificam fluxos positivos e exceções.
 Confirma a ordem correta das chamadas.  
 **Exemplo:** Atualiza um usuário com criptografia da senha e verifica chamadas internas.
 
+---
+
 ### Testes de Controller API
 **Arquivo:** `UsuarioApiControllerTest.java`  
 Testam endpoints REST (GET, POST, PUT, DELETE) via MockMvc.  
@@ -50,12 +68,16 @@ Verificam status HTTP, conteúdo JSON e tratamento de exceções.
 Validam casos de sucesso e erros (ex: 404 e BadRequest).  
 **Exemplo:** GET /api/usuarios/{id} retorna o usuário correto ou erro 404 quando não encontrado.
 
+---
+
 ### Testes de Controller de View (Web MVC)
 **Arquivo:** `MainControllerTest.java`  
 Testam controllers que retornam páginas via Thymeleaf.  
 Validam redirecionamentos, renderização das views e autenticação.  
 Usam `@WebMvcTest` com contexto Spring.  
 **Exemplo:** Verifica redirecionamento para login e carregamento das páginas de login, cadastro e home (esta última somente para usuários autenticados).
+
+---
 
 ### Relatórios de Testes
 
