@@ -30,6 +30,7 @@ public class SeleniumTestUtil {
 
     public static void preencherCampo(WebDriverWait wait, String id, String valor){
         WebElement input = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(id)));
+        input.clear();
         input.sendKeys(valor);
     }
 
@@ -40,5 +41,25 @@ public class SeleniumTestUtil {
 
     public static void esperarUrl(WebDriverWait wait, String url) {
         wait.until(ExpectedConditions.urlToBe(url));
+    }
+
+    public static void clicarEditarLinha(WebDriver driver, WebDriverWait wait, int linha) {
+        WebElement editar = wait.until(
+                ExpectedConditions.elementToBeClickable(
+                        By.xpath("//table/tbody/tr[" + linha + "]//a[text()='Editar']")
+                )
+        );
+        editar.click();
+    }
+
+    public static void clicarExcluirLinha(WebDriver driver, WebDriverWait wait, int linha) {
+        WebElement botaoExcluir = wait.until(
+                ExpectedConditions.elementToBeClickable(
+                        By.xpath("//table/tbody/tr[" + linha + "]//button[text()='Excluir']")
+                )
+        );
+        botaoExcluir.click();
+        wait.until(ExpectedConditions.alertIsPresent());
+        driver.switchTo().alert().accept();
     }
 }
