@@ -26,6 +26,18 @@ public class ClienteControllerAdviceRest {
                 .body(erroPadrao);
     }
 
+    @ExceptionHandler({ClienteComLocacoesException.class})
+    public ResponseEntity<ErroPadrao> handlerClienteComLocacoesException(ClienteComLocacoesException ex) {
+        ErroPadrao erroPadrao = new ErroPadrao();
+        erroPadrao.setCodigoErro(ErroCodigo.CLIENTE_COM_LOCACAO.name());
+        erroPadrao.setDataHora(LocalDateTime.now());
+        erroPadrao.setMensagem(ex.getMessage());
+
+        return ResponseEntity
+                .status(HttpStatus.CONFLICT)
+                .body(erroPadrao);
+    }
+
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ResponseEntity<ErroPadrao> handleDataIntegrityViolation(DataIntegrityViolationException ex) {
         ErroPadrao erroPadrao = new ErroPadrao();
