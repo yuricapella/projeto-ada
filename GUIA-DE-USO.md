@@ -1,35 +1,74 @@
-# Guia de Uso
+# 📘 Guia de Uso
 
-<a id="voltar-ao-topo"></a>  
 [⬅ Voltar ao README](README.md)
+
+---
 
 ## 📬 1. Acesso à Collection do Postman
 
-🔗 [Visualizar no Postman (modo viewer)](https://yuricapella.postman.co/workspace/Yuri-Capella's-Workspace~eed12cec-649d-4622-8f2c-fee779577473/collection/43702238-1bf00d63-906d-4f84-83f7-46e258bf48d8?share=true&origin=sidebar)
+🔗 [Acessar Collection](https://yuricapella.postman.co/workspace/Yuri-Capella's-Workspace~eed12cec-649d-4622-8f2c-fee779577473/collection/43702238-1bf00d63-906d-4f84-83f7-46e258bf48d8?share=true&origin=sidebar)  
+📁 [Baixar Collection JSON](https://github.com/yuricapella/projeto-ada/blob/testes-a-entregar/postman/projeto_ada.postman_collection.json)
 
-📁 [Baixar arquivo da collection](https://github.com/yuricapella/projeto-ada/tree/main/src/main/java/tech/ada/projeto_ada/postman)
+Importe no Postman: `Import` ▶ `File`.
 
-> Você pode importar esse arquivo `.json` diretamente no Postman para testar as rotas da API, escolha **Import** ▶ **File**.
+---
 
-## 2. Endpoints Principais da API
+## 🌐 2. Endpoints da API
 
 Base URL: `http://localhost:8080`
 
-| Método | URL                        | Descrição                            | Autorização        |
-|--------|----------------------------|--------------------------------------|--------------------|
-| GET    | `/api/usuarios`            | Lista todos os usuários              | Basic Auth* / aberto |
-| GET    | `/api/usuarios/{id}`       | Busca usuário por ID                 | Basic Auth* / aberto |
-| POST   | `/api/usuarios`            | Cria novo usuário (JSON)             | aberto             |
-| PUT    | `/api/usuarios/{id}`       | Atualiza usuário existente (JSON)    | Basic Auth* / aberto |
-| DELETE | `/api/usuarios/{id}`       | Remove usuário                       | Basic Auth* / aberto |
+### 🔓 Público (sem autenticação)
 
-\* Para autenticar (caso ainda ative segurança):  
-```
-username: apiuser
-password: apipassword
-```
+| Método | URL                                | Descrição                     |
+|--------|------------------------------------|-------------------------------|
+| POST   | /api/usuarios                      | Criar usuário                 |
+| POST   | /api/poo1/clientes                 | Criar cliente                 |
+| POST   | /api/poo1/veiculos                 | Criar veículo                 |
+| POST   | /api/poo1/locacao                  | Criar locação                 |
+| POST   | /api/logica-programacao/salarios  | Calcular salários             |
 
-### 2.1 Formato JSON para criação/atualização
+
+### 🔐 Protegido (requer autenticação)
+| Entidade   | Verbo  | URL                                | Descrição                     |
+|------------|--------|------------------------------------|-------------------------------|
+| Usuários   | GET    | /api/usuarios                      | Listar todos                  |
+| Usuários   | GET    | /api/usuarios/{id}                 | Buscar por ID                 |
+| Usuários   | PUT    | /api/usuarios/{id}                 | Atualizar usuário             |
+| Usuários   | DELETE | /api/usuarios/{id}                 | Deletar usuário               |
+|------------|--------|------------------------------------|-------------------------------|
+| Clientes   | GET    | /api/poo1/clientes                 | Listar todos                  |
+| Clientes   | GET    | /api/poo1/clientes/{id}            | Buscar por ID                 |
+| Clientes   | PUT    | /api/poo1/clientes/{id}            | Atualizar cliente             |
+| Clientes   | DELETE | /api/poo1/clientes/{id}            | Deletar cliente               |
+|------------|--------|------------------------------------|-------------------------------|
+| Veículos   | GET    | /api/poo1/veiculos                 | Listar todos                  |
+| Veículos   | GET    | /api/poo1/veiculos/{id}            | Buscar por ID                 |
+| Veículos   | PUT    | /api/poo1/veiculos/{id}            | Atualizar veículo             |
+| Veículos   | DELETE | /api/poo1/veiculos/{id}            | Deletar veículo               |
+|------------|--------|------------------------------------|-------------------------------|
+| Locação    | GET    | /api/poo1/locacao                  | Listar locações               |
+| Locação    | GET    | /api/poo1/locacao/{id}             | Buscar por ID                 |
+| Locação    | PUT    | /api/poo1/locacao/{id}             | Atualizar locação             |
+| Locação    | DELETE | /api/poo1/locacao/{id}             | Deletar locação               |
+---
+
+## 👤 Usuários Padrão (pré-cadastrados)
+
+Local: `config/inicializar/UsuarioDataInitializer`
+
+| Email                        | Senha     |
+|-----------------------------|-----------|
+| joao.silva@email.com        | senha123  |
+| maria.oliveira@email.com    | senha456  |
+| pedro.santos@email.com      | senha789  |
+| ana.rodrigues@email.com     | senhaabc  |
+| yuri@yuri.com               | yuri      |
+
+
+
+### Cadastro de Usuário via API
+
+POST `http://localhost:8080/api/usuarios`
 
 ```json
 {
@@ -39,33 +78,171 @@ password: apipassword
 }
 ```
 
-## 3. Acesso ao H2 Console
+---
 
-- URL: `http://localhost:8080/h2`
-- JDBC URL: `jdbc:h2:mem:test`
-- Username: `sa`
-- (senha em branco)
+## 👥 Clientes Padrão (pré-cadastrados)
 
-## 4. Swagger / OpenAPI
+Local: `config/inicializador/ClienteDataInitializer`
 
-- A documentação interativa está disponível em:  
-  `http://localhost:8080/swagger.html`
-- Os endpoints OpenAPI em JSON estão em:  
-  `http://localhost:8080/v3/api-docs`
+| Nome            | Tipo             | Endereço     | Telefone        |
+|-----------------|------------------|--------------|------------------|
+| Cliente PF 1    | Pessoa Física    | Rua PF 1     | 11 91111-0001    |
+| Cliente PJ 1    | Pessoa Jurídica  | Rua PJ 1     | 22 92222-0001    |
 
-## 5. Interface Web (Thymeleaf)
+### Cadastro de Cliente via API
 
-- Ao acessar `http://localhost:8080`, você será redirecionado para a tela de **login**.
-- **Usuários** já pré-populados pelo `DataInitializer` podem fazer login imediatamente.
-- Para criar nova conta: clique em **Não tem uma conta? Cadastre-se**.
-- Após cadastro, use as credenciais para efetuar login.
-- Logout disponível no menu.
+POST `http://localhost:8080/api/clientes`
 
-## 6. Observações
+```json
+{
+  "nome": "João da Silva",
+  "documento": "CPF",
+  "endereco": "Rua das Flores, 123",
+  "telefone": "11912345678"
+}
+```
 
-- A API REST de usuários está 100% funcional, com tratamento de exceções e mensagens personalizadas.
-- Módulos de **Lógica de Programação** e **POO 1** estão presentes como páginas esqueléticas e serão integrados à API em breve.
-- Testes foram estruturados (Postman e mocks) mas ainda não possuem validações automatizadas.
+---
+
+## 🚗 Veículos Padrão (pré-cadastrados)
+
+Local: `config/inicializador/VeiculoDataInitializer`
+
+| Nome             | Placa   | Tipo     | Categoria     |
+|------------------|---------|----------|---------------|
+| Caminhao 1       | CAM1    | Comum    | CAMINHAO      |
+| Moto 1           | MOT1    | Comum    | MOTO          |
+| Carro comum 1    | CAR1    | Comum    | CARRO_COMUM   |
+| Carro Premium 1  | PREM1   | Luxo     | CARRO_PREMIUM |
+| SUV 1            | SUV1    | Luxo     | SUV           |
+
+---
+
+### 📦 Cadastro de Veículos via API
+
+- **POST** `http://localhost:8080/api/veiculos`
+
+#### 📌 Exemplo de corpo da requisição
+
+```json
+{
+  "modelo": "Civic",
+  "placa": "DEF2F34",
+  "valorDiaria": 120.0,
+  "disponivel": true,
+  "tipo": "COMUM",
+  "tipoClasse": "CARRO_COMUM"
+}
+```
+
+---
+
+## 📄 Locação Padrão (pré-cadastrada)
+
+Local: `config/inicializador/LocacaoDataInitializer`
+
+| Cliente           | Veículo         | Dias | Placa        | Valor Diário | Status       |
+|-------------------|-----------------|------|--------------|--------------|--------------|
+| Cliente locacao   | Carro locacao    | 5    | CARLOCACAO   | 300.0        | Indisponível |
+
+---
+
+POST `http://localhost:8080/api/locacoes`
+
+```json
+{
+  "clienteId": 1,
+  "veiculoId": 3,
+  "diasDeLocacao": 5
+}
+```
+
+--- 
+## 💰 API de Cálculo de Salários (Lógica de Programação)
+
+Base URL: `http://localhost:8080/api/logica-programacao`
+
+| Método | URL                        | Descrição                                         | Parâmetros              |
+|--------|----------------------------|---------------------------------------------------|--------------------------|
+| POST   | `/salarios`                | Calcula os descontos com base no salário bruto   | `dependentes` (opcional) |
+
+### Parâmetro Opcional
+
+| Nome         | Tipo   | Padrão | Descrição                                            |
+|--------------|--------|--------|------------------------------------------------------|
+| dependentes  | int    | `0`    | Número de dependentes usados no cálculo do IRRF     |
+
+- Com dependentes:  
+  `http://localhost:8080/api/logica-programacao/salarios?dependentes=2`  
+- Sem dependentes (padrão):  
+  `http://localhost:8080/api/logica-programacao/salarios`
+
+### 7.2 Formato JSON para requisição
+
+Você pode enviar **um único salário** ou **uma lista de salários**:
+
+#### ✔️ Exemplo com 1 salário
+
+```json
+[
+  {
+    "salarioBruto": 3000.0
+  }
+]
+````
+
+#### ✔️ Exemplo com múltiplos salários
+
+```json
+[
+  {
+    "salarioBruto": 3000.0
+  },
+  {
+    "salarioBruto": 4500.0
+  },
+  {
+    "salarioBruto": 7000.0
+  }
+]
+```
+
+---
+
+## 🔧 Rodando o Projeto
+
+```bash
+mvn clean install
+````
+
+* App rodando em `http://localhost:8080`
+* Swagger: `http://localhost:8080/swagger.html`
+* H2 Console: `http://localhost:8080/h2`
+
+  * JDBC: `jdbc:h2:mem:test`
+  * Usuário: `sa`
+  * Senha: *(em branco)*
+
+---
+
+## ✅ Executando os Testes
+
+Após build:
+
+```bash
+mvn test
+```
+
+* Relatório de cobertura:
+  Abrir `target/site/jacoco/index.html` no navegador
+
+---
+
+## 💡 Observações
+
+* API REST funcional com tratamento de erros
+* Módulos `logica-programacao` e `poo1` refatorados e concluídos
+* Testes unitários criados e organizados por camada (repository, service, controller)
+* Arquivos Postman incluídos para facilitar testes manuais
 
 [🔝 Voltar ao topo](#voltar-ao-topo)
-
