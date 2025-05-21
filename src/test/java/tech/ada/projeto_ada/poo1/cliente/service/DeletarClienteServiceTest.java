@@ -9,6 +9,7 @@ import tech.ada.projeto_ada.poo1.cliente.exception.ClienteNaoEncontradoException
 import tech.ada.projeto_ada.poo1.cliente.model.Cliente;
 import tech.ada.projeto_ada.poo1.cliente.repository.ClienteRepository;
 import tech.ada.projeto_ada.poo1.cliente.util.TestClientPrinter;
+import tech.ada.projeto_ada.poo1.locacao.repository.LocacaoRepository;
 import tech.ada.projeto_ada.util.TestPrinter;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,13 +18,15 @@ class DeletarClienteServiceTest {
     DeletarClienteService deletarClienteService;
     BuscarClienteService buscarClienteService;
     ClienteRepository clienteRepository;
+    LocacaoRepository locacaoRepository;
 
     @BeforeEach
     void setUp(TestInfo info) {
         TestPrinter.printInicioDoTeste(info.getDisplayName());
         clienteRepository = Mockito.mock(ClienteRepository.class);
         buscarClienteService = Mockito.mock(BuscarClienteService.class);
-        deletarClienteService = new DeletarClienteService(clienteRepository, buscarClienteService);
+        locacaoRepository = Mockito.mock(LocacaoRepository.class);
+        deletarClienteService = new DeletarClienteService(clienteRepository, buscarClienteService, locacaoRepository);
     }
 
     @Test
