@@ -35,7 +35,7 @@ public class UsuarioViewController {
 
             criarUsuarioService.criarUsuario(usuario);
             redirectAttributes.addAttribute("success", true);
-            return "redirect:/login";
+            return "redirect:/cadastro";
 
         } catch (DataIntegrityViolationException e) {
             redirectAttributes.addAttribute("error", true);
