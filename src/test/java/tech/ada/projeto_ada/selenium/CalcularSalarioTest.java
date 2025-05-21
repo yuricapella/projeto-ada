@@ -32,11 +32,8 @@ public class CalcularSalarioTest {
     @Test
     void deveCalcularUmSalarioSemDependentesComSucesso() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        driver.get("http://localhost:8080/login");
 
-        driver.findElement(By.name("email")).sendKeys("joao.silva@email.com");
-        driver.findElement(By.name("senha")).sendKeys("senha123");
-        driver.findElement(By.cssSelector("button[type='submit']")).click();
+        fazerLogin(wait);
 
         Assertions.assertEquals("http://localhost:8080/home", driver.getCurrentUrl());
 
