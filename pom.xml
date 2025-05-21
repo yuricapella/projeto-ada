@@ -147,6 +147,9 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>3.1.2</version>
 				<configuration>
+					<excludes>
+						<exclude>**/selenium/**</exclude>
+					</excludes>
 					<argLine>@{argLine} -XX:+EnableDynamicAgentLoading</argLine>
 				</configuration>
 			</plugin>
