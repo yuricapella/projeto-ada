@@ -62,7 +62,7 @@ class BuscarVeiculoServiceTest {
     void deveLancarExcecaoQuandoVeiculoNaoEncontrado() {
         Long id = 1L;
 
-        Mockito.when(repository.findById(id)).thenThrow(new VeiculoNaoEncontradoException(id));
+        Mockito.when(repository.findById(id)).thenReturn(Optional.empty());
 
         VeiculoNaoEncontradoException exception = assertThrows(
                 VeiculoNaoEncontradoException.class,

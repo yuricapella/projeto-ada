@@ -9,7 +9,6 @@ import tech.ada.projeto_ada.poo1.cliente.model.Cliente;
 import tech.ada.projeto_ada.poo1.cliente.repository.ClienteRepository;
 import tech.ada.projeto_ada.poo1.cliente.util.ClienteCreator;
 import tech.ada.projeto_ada.poo1.cliente.util.TestClientPrinter;
-import tech.ada.projeto_ada.poo1.cliente.util.TipoCliente;
 import tech.ada.projeto_ada.util.TestPrinter;
 
 import java.util.List;
@@ -63,7 +62,7 @@ class BuscarClienteServiceTest {
     void deveLancarExcecaoQuandoClienteNaoEncontrado(){
         Long id = 1L;
 
-        Mockito.when(clienteRepository.findById(id)).thenThrow(new ClienteNaoEncontradoException(id));
+        Mockito.when(clienteRepository.findById(id)).thenReturn(Optional.empty());
 
         ClienteNaoEncontradoException exception = assertThrows(
                 ClienteNaoEncontradoException.class, () -> service.buscarClientePorId(id));
