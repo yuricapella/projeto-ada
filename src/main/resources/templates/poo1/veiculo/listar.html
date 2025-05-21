@@ -39,7 +39,7 @@
                     <td th:text="${#numbers.formatDecimal(veiculo.valorDiaria, 1, 'POINT', 2, 'COMMA')}"></td>
                     <td th:text="${veiculo.disponivel ? 'Sim' : 'Não'}"></td>
                     <td>
-                        <a th:href="@{/poo1/veiculo/alugar/{id}(id=${veiculo.id})}" class="btn btn-primary">Alugar</a>
+                        <a th:href="@{/poo1/locacao/cadastrar(veiculoId=${veiculo.id})}" class="btn btn-primary">Alugar</a>
                         <a th:href="@{/poo1/veiculo/atualizar/{id}(id=${veiculo.id})}" class="btn">Editar</a>
                         <form th:action="@{/poo1/veiculo/deletar/{id}(id=${veiculo.id})}" method="post"
                               onsubmit="return confirm('Confirma exclusão?');" style="display:inline;">

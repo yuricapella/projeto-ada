@@ -44,8 +44,12 @@ public class LocacaoViewController {
     }
 
     @GetMapping("/cadastrar")
-    public String exibirFormularioCadastro(Model model) {
-        model.addAttribute("locacao", new AtualizarLocacaoRequestDTO());
+    public String exibirFormularioCadastro(@RequestParam(required = false) Long veiculoId, Model model) {
+        AtualizarLocacaoRequestDTO dto = new AtualizarLocacaoRequestDTO();
+        if (veiculoId != null) {
+            dto.setVeiculoId(veiculoId);
+        }
+        model.addAttribute("locacao", dto);
         return "poo1/locacao/cadastrar";
     }
 
