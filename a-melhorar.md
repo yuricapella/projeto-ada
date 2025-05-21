@@ -46,7 +46,7 @@ Verificar como criar profiles para separar produção e testes.
 Parece que repository tem que ter uma profile diferente também pois 
 pode ter dependencias diferentes e demorar mais que os testes unitários geralmente.
 - pelo que verifiquei apenas quando usa @SpringTestBoot ou @DataJPATest algo assim para poder colocar @activeprofile e separar
-- até o momento só consegui colocar no teste de usuario repository.
+- coloquei em repositorys, teste de perfil e teste view controller
 ----------
 usar aquele tipo de teste que roda com varios argumentos, parametrized test? em teste de badrequest para testar mais cenarios
 
