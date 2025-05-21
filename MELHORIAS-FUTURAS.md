@@ -97,12 +97,12 @@
 * [ ] Filtrar por status ativo/inativo
 * [ ] Ocultar veículos alugados e locações encerradas
 * [ ] Validações CPF/CNPJ
-* [ ] Restrições para exclusão com locações ativas
+* [x] Restrições para exclusão com locações ativas (Para cliente, ao tentar excluir no site, da mensagem de erro)
 * [ ] Tratamento de exceções para placas duplicadas
 * [ ] Máscara e validação de telefone
 * [ ] Classes de validação no service
 * [ ] Testes completos e organizados
-* [ ] Testes com `@ParameterizedTest`
+* [x] Testes com `@ParameterizedTest` (feito no teste de interface de calcular salarios)
 * [X] Profiles separados para produção/teste
 
 ---
