@@ -13,6 +13,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import tech.ada.projeto_ada.config.ControllerAdviceRest;
+import tech.ada.projeto_ada.usuario.dto.AtualizarUsuarioRequestDTO;
 import tech.ada.projeto_ada.usuario.dto.CriarUsuarioRequestDTO;
 import tech.ada.projeto_ada.usuario.dto.UsuarioResponseDTO;
 import tech.ada.projeto_ada.usuario.exception.UsuarioControllerAdviceRest;
@@ -139,7 +140,7 @@ class UsuarioApiControllerTest {
     void deveAtualizarUsuarioPorIdComSucesso() throws Exception {
         Long id = 1L;
 
-        CriarUsuarioRequestDTO usuarioDTO = new CriarUsuarioRequestDTO(
+        AtualizarUsuarioRequestDTO usuarioDTO = new AtualizarUsuarioRequestDTO(
                 "Yuri Atualizado", "yuri@yuri.com", "12345678"
         );
 

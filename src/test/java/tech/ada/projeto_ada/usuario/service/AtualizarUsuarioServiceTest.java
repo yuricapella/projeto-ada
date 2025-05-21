@@ -6,7 +6,7 @@ import org.junit.jupiter.api.TestInfo;
 import org.mockito.InOrder;
 import org.mockito.Mockito;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import tech.ada.projeto_ada.usuario.dto.CriarUsuarioRequestDTO;
+import tech.ada.projeto_ada.usuario.dto.AtualizarUsuarioRequestDTO;
 import tech.ada.projeto_ada.usuario.exception.UsuarioNaoEncontradoException;
 import tech.ada.projeto_ada.usuario.model.Usuario;
 import tech.ada.projeto_ada.usuario.repository.UsuarioRepository;
@@ -36,7 +36,7 @@ class AtualizarUsuarioServiceTest {
         usuarioExistente.setId(id);
         String nomeAntigo = usuarioExistente.getNome();
 
-        CriarUsuarioRequestDTO usuarioDTO = new CriarUsuarioRequestDTO("Yuri Atualizado","yuri@yuri.com","12345678");
+        AtualizarUsuarioRequestDTO usuarioDTO = new AtualizarUsuarioRequestDTO("Yuri Atualizado","yuri@yuri.com","12345678");
         String senhaOriginal = usuarioDTO.getSenha();
         String senhaCriptografada = "senha_criptografada";
         Usuario usuarioDTOComSenhaCriptografada = new Usuario("Yuri","yuri@yuri.com",senhaCriptografada);
@@ -66,7 +66,7 @@ class AtualizarUsuarioServiceTest {
     @Test
     void deveLancarExcecaoQuandoUsuarioNaoForEncontrado(){
         Long id = 99L;
-        CriarUsuarioRequestDTO usuarioDTO = new CriarUsuarioRequestDTO("Teste", "teste@email.com", "senha");
+        AtualizarUsuarioRequestDTO usuarioDTO = new AtualizarUsuarioRequestDTO("Teste", "teste@email.com", "senha");
 
         Mockito.when(buscarService.buscarUsuarioPorId(id))
                 .thenThrow(new UsuarioNaoEncontradoException(id));

@@ -2,7 +2,7 @@ package tech.ada.projeto_ada.usuario.service;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import tech.ada.projeto_ada.usuario.dto.CriarUsuarioRequestDTO;
+import tech.ada.projeto_ada.usuario.dto.AtualizarUsuarioRequestDTO;
 import tech.ada.projeto_ada.usuario.dto.mapper.AtualizarUsuarioRequestMapper;
 import tech.ada.projeto_ada.usuario.model.Usuario;
 import tech.ada.projeto_ada.usuario.repository.UsuarioRepository;
@@ -21,7 +21,7 @@ public class AtualizarUsuarioService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public void atualizarUsuario(CriarUsuarioRequestDTO usuarioAtualizado, Long id) {
+    public void atualizarUsuario(AtualizarUsuarioRequestDTO usuarioAtualizado, Long id) {
         Usuario usuarioExistente = buscarUsuarioService.buscarUsuarioPorId(id);
         AtualizarUsuarioRequestMapper.updateEntity(usuarioExistente, usuarioAtualizado);
         usuarioExistente.setSenha(passwordEncoder.encode(usuarioExistente.getSenha()));

@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import tech.ada.projeto_ada.usuario.dto.AtualizarUsuarioRequestDTO;
 import tech.ada.projeto_ada.usuario.dto.CriarUsuarioRequestDTO;
 import tech.ada.projeto_ada.usuario.dto.UsuarioResponseDTO;
 import tech.ada.projeto_ada.usuario.dto.mapper.CriarUsuarioRequestMapper;
@@ -50,7 +51,7 @@ public class UsuarioApiController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Usuario> atualizarUsuario(@PathVariable(value = "id") Long id,
-                                                    @RequestBody @Valid CriarUsuarioRequestDTO usuario) {
+                                                    @RequestBody @Valid AtualizarUsuarioRequestDTO usuario) {
 
         atualizarUsuarioService.atualizarUsuario(usuario,id);
         return ResponseEntity.status(HttpStatus.OK).build();
