@@ -1,5 +1,6 @@
 package tech.ada.projeto_ada.selenium.util;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -43,23 +44,24 @@ public class SeleniumTestUtil {
         wait.until(ExpectedConditions.urlToBe(url));
     }
 
-    public static void clicarEditarLinha(WebDriver driver, WebDriverWait wait, int linha) {
+    public static void clicarEditarPorId(WebDriver driver, WebDriverWait wait, long id) {
         WebElement editar = wait.until(
                 ExpectedConditions.elementToBeClickable(
-                        By.xpath("//table/tbody/tr[" + linha + "]//a[text()='Editar']")
+                        By.xpath("//a[@href='/poo1/cliente/atualizar/" + id + "']")
                 )
         );
         editar.click();
     }
 
-    public static void clicarExcluirLinha(WebDriver driver, WebDriverWait wait, int linha) {
-        WebElement botaoExcluir = wait.until(
+    public static void clicarExcluirPorId(WebDriver driver, WebDriverWait wait, long id) {
+        WebElement excluir = wait.until(
                 ExpectedConditions.elementToBeClickable(
-                        By.xpath("//table/tbody/tr[" + linha + "]//button[text()='Excluir']")
+                        By.xpath("//form[contains(@action, '/poo1/cliente/deletar/" + id + "')]//button[@id='btn-excluir']")
                 )
         );
-        botaoExcluir.click();
-        wait.until(ExpectedConditions.alertIsPresent());
-        driver.switchTo().alert().accept();
+        excluir.click();
+        Alert alerta = wait.until(ExpectedConditions.alertIsPresent());
+        alerta.accept();
     }
+
 }
