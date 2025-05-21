@@ -11,9 +11,10 @@
 
     <main>
         <section class="form-section">
-            <h2>Atualizar Novo Cliente</h2>
+            <h2>Atualizar Cliente</h2>
             <form th:action="@{/poo1/cliente/atualizar/{id}(id=${cliente.id})}" th:object="${cliente}" method="post">
                 <input type="hidden" name="_method" value="put"/>
+
                 <div class="form-group">
                     <label for="nome">Nome:</label>
                     <input type="text" id="nome" th:field="*{nome}" required>
@@ -24,8 +25,9 @@
                     <label for="documento">Tipo de Documento:</label>
                     <select id="documento" th:field="*{documento}" required>
                         <option value="">-- Selecione --</option>
-                        <option value="CPF">CPF</option>
-                        <option value="CNPJ">CNPJ</option>
+                        <option th:each="tipo : ${T(tech.ada.projeto_ada.poo1.cliente.util.TipoCliente).values()}"
+                                th:value="${tipo.getIdentificador()}"
+                                th:text="${tipo.getIdentificador()}"></option>
                     </select>
                     <div th:if="${#fields.hasErrors('documento')}" th:errors="*{documento}" class="error-message"></div>
                 </div>
@@ -43,8 +45,8 @@
                 </div>
 
                 <div class="button-group">
-                    <button type="submit" class="btn">Salvar</button>
-                    <a th:href="@{/poo1/cliente/listar}" class="btn">Cancelar</a>
+                    <button id="btn-salvar" type="submit" class="btn">Salvar</button>
+                    <a id="btn-cancelar" th:href="@{/poo1/cliente/listar}" class="btn">Cancelar</a>
                 </div>
             </form>
         </section>

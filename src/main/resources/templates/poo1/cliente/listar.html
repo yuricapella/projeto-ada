@@ -20,7 +20,7 @@
         </div>
 
         <div class="button-group">
-            <a th:href="@{/poo1/cliente/cadastrar}" class="btn">Cadastrar Novo Cliente</a>
+            <a id="btn-cadastrar" th:href="@{/poo1/cliente/cadastrar}" class="btn">Cadastrar Novo Cliente</a>
         </div>
 
         <div th:unless="${#lists.isEmpty(clientes)}">
@@ -38,7 +38,7 @@
                     <td th:text="${cliente.endereco}"></td>
                     <td th:text="${cliente.telefone}"></td>
                     <td>
-                        <a th:href="@{/poo1/cliente/atualizar/{id}(id=${cliente.id})}" class="btn">Editar</a>
+                        <a id="btn-editar" th:href="@{/poo1/cliente/atualizar/{id}(id=${cliente.id})}" class="btn">Editar</a>
                         <form th:action="@{/poo1/cliente/deletar/{id}(id=${cliente.id})}" method="post"
                               onsubmit="return confirm('Confirma exclusão?');" style="display:inline;">
                             <input type="hidden" name="_method" value="DELETE">
