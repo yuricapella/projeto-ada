@@ -68,6 +68,13 @@
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 
+		<!-- SPRING SECURITY TEST -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
 		<!-- THYMELEAF SECURITY-->
 		<dependency>
 			<groupId>org.thymeleaf.extras</groupId>
@@ -156,18 +163,28 @@
 				<executions>
 					<execution>
 						<id>prepare-agent</id>
-						<goals><goal>prepare-agent</goal></goals>
-						<configuration>
-							<excludes>
-								<exclude>tech/ada/ml_users/exception/**</exclude>
-								<exclude>tech/ada/ml_users/config/**</exclude>
-							</excludes>
-						</configuration>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
 					</execution>
 					<execution>
 						<id>report</id>
 						<phase>verify</phase>
-						<goals><goal>report</goal></goals>
+						<goals>
+							<goal>report</goal>
+						</goals>
+						<configuration>
+							<excludes>
+								<exclude>**/model/**</exclude>
+								<exclude>**/util/**</exclude>
+								<exclude>**/config/**</exclude>
+								<exclude>**/exception/**</exclude>
+								<exclude>**/ProjetoAdaApplication.*</exclude>
+								<exclude>**/*ViewController.*</exclude>
+								<exclude>**/HomeController.*</exclude>
+								<exclude>**/dto/**</exclude>
+							</excludes>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>
