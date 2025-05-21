@@ -14,6 +14,13 @@
             <p>Faça login para acessar todas as funcionalidades do sistema.</p>
         </section>
         <div class="form-container">
+            <div th:if="${param.error}" class="error-message">
+                <p>Email ou senha inválidos. Tente novamente.</p>
+            </div>
+            <div th:if="${param.logout}" class="success-message">
+                <p>Logout realizado com sucesso.</p>
+            </div>
+
             <form th:action="@{/login}" method="post">
                 <div class="form-group">
                     <label for="email">Email:</label>
