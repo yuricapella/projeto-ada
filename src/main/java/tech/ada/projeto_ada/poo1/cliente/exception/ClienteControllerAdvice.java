@@ -8,8 +8,8 @@ import org.springframework.ui.Model;
 @ControllerAdvice(assignableTypes = ClienteViewController.class)
 public class ClienteControllerAdvice {
 
-    @ExceptionHandler(ClienteComLocacoesException.class)
-    public String handleClienteComLocacoes(ClienteComLocacoesException ex, Model model) {
+    @ExceptionHandler(ClienteComLocacaoException.class)
+    public String handleClienteComLocacoes(ClienteComLocacaoException ex, Model model) {
         model.addAttribute("erroClienteComLocacoes", ex.getMessage());
         return "poo1/cliente/listar";
     }

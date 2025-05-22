@@ -26,8 +26,8 @@ public class ClienteControllerAdviceRest {
                 .body(erroPadrao);
     }
 
-    @ExceptionHandler({ClienteComLocacoesException.class})
-    public ResponseEntity<ErroPadrao> handlerClienteComLocacoesException(ClienteComLocacoesException ex) {
+    @ExceptionHandler({ClienteComLocacaoException.class})
+    public ResponseEntity<ErroPadrao> handlerClienteComLocacoesException(ClienteComLocacaoException ex) {
         ErroPadrao erroPadrao = new ErroPadrao();
         erroPadrao.setCodigoErro(ErroCodigo.CLIENTE_COM_LOCACAO.name());
         erroPadrao.setDataHora(LocalDateTime.now());

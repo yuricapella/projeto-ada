@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInfo;
 import org.mockito.InOrder;
 import org.mockito.Mockito;
-import tech.ada.projeto_ada.poo1.cliente.exception.ClienteComLocacoesException;
+import tech.ada.projeto_ada.poo1.cliente.exception.ClienteComLocacaoException;
 import tech.ada.projeto_ada.poo1.cliente.exception.ClienteNaoEncontradoException;
 import tech.ada.projeto_ada.poo1.cliente.model.Cliente;
 import tech.ada.projeto_ada.poo1.cliente.repository.ClienteRepository;
@@ -14,7 +14,6 @@ import tech.ada.projeto_ada.poo1.locacao.repository.LocacaoRepository;
 import tech.ada.projeto_ada.util.TestPrinter;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
 class DeletarClienteServiceTest {
@@ -85,7 +84,7 @@ class DeletarClienteServiceTest {
         when(buscarClienteService.buscarClientePorId(id)).thenReturn(cliente);
         when(locacaoRepository.existsByClienteId(id)).thenReturn(true);
 
-        ClienteComLocacoesException exception = assertThrows(ClienteComLocacoesException.class, () -> {
+        ClienteComLocacaoException exception = assertThrows(ClienteComLocacaoException.class, () -> {
             deletarClienteService.deletarCliente(id);
         });
 

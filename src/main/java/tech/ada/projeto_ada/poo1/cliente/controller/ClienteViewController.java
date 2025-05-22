@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import tech.ada.projeto_ada.poo1.cliente.dto.AtualizarClienteRequestDTO;
 import tech.ada.projeto_ada.poo1.cliente.dto.CriarClienteRequestDTO;
 import tech.ada.projeto_ada.poo1.cliente.dto.mapper.CriarClienteRequestMapper;
-import tech.ada.projeto_ada.poo1.cliente.exception.ClienteComLocacoesException;
+import tech.ada.projeto_ada.poo1.cliente.exception.ClienteComLocacaoException;
 import tech.ada.projeto_ada.poo1.cliente.model.Cliente;
 import tech.ada.projeto_ada.poo1.cliente.service.AtualizarClienteService;
 import tech.ada.projeto_ada.poo1.cliente.service.BuscarClienteService;
@@ -84,7 +84,7 @@ public class ClienteViewController {
         try {
             deletarClienteService.deletarCliente(id);
             return "redirect:/poo1/cliente/listar";
-        } catch (ClienteComLocacoesException ex) {
+        } catch (ClienteComLocacaoException ex) {
             List<Cliente> clientes = buscarClienteService.buscarTodosClientes();
             model.addAttribute("clientes", clientes);
             model.addAttribute("erroClienteComLocacoes", ex.getMessage());
