@@ -5,8 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import tech.ada.projeto_ada.exception.ErroPadrao;
 import tech.ada.projeto_ada.exception.ErroCodigo;
+import tech.ada.projeto_ada.exception.ErroPadrao;
 import tech.ada.projeto_ada.poo1.veiculo.controller.VeiculoApiController;
 
 import java.time.LocalDateTime;
@@ -23,6 +23,18 @@ public class VeiculoControllerAdviceRest {
 
         return ResponseEntity
                 .status(HttpStatus.NOT_FOUND)
+                .body(erroPadrao);
+    }
+
+    @ExceptionHandler({VeiculoComLocacaoException.class})
+    public ResponseEntity<ErroPadrao> handlerVeiculoComLocacaoException(VeiculoComLocacaoException ex) {
+        ErroPadrao erroPadrao = new ErroPadrao();
+        erroPadrao.setCodigoErro(ErroCodigo.VEICULO_COM_LOCACAO.name());
+        erroPadrao.setDataHora(LocalDateTime.now());
+        erroPadrao.setMensagem(ex.getMessage());
+
+        return ResponseEntity
+                .status(HttpStatus.CONFLICT)
                 .body(erroPadrao);
     }
 
