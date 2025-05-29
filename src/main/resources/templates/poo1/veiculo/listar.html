@@ -15,6 +15,10 @@
             <p>Abaixo estão os veículos cadastrados no sistema.</p>
         </section>
 
+        <div th:if="${erroVeiculoComLocacao}" class="error-message">
+            <p th:text="${erroVeiculoComLocacao}"></p>
+        </div>
+
         <div th:if="${#lists.isEmpty(veiculos)}" class="error-message">
             <p>Nenhum veículo encontrado.</p>
         </div>
@@ -32,7 +36,7 @@
                 </thead>
                 <tbody>
                 <tr th:each="veiculo, iterStat : ${veiculos}">
-                    <td th:text="${iterStat.count}"></td>
+                    <td th:text="${veiculo.id}"></td>
                     <td th:text="${veiculo.modelo}"></td>
                     <td th:text="${veiculo.placa}"></td>
                     <td th:text="${veiculo.tipo}"></td>

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import tech.ada.projeto_ada.poo1.veiculo.dto.AtualizarVeiculoRequestDTO;
 import tech.ada.projeto_ada.poo1.veiculo.dto.mapper.CriarVeiculoRequestMapper;
 import tech.ada.projeto_ada.poo1.veiculo.dto.CriarVeiculoRequestDTO;
+import tech.ada.projeto_ada.poo1.veiculo.exception.VeiculoComLocacaoException;
 import tech.ada.projeto_ada.poo1.veiculo.model.Veiculo;
 import tech.ada.projeto_ada.poo1.veiculo.service.AtualizarVeiculoService;
 import tech.ada.projeto_ada.poo1.veiculo.service.BuscarVeiculoService;
@@ -98,8 +99,16 @@ public class VeiculoViewController {
 
 
     @DeleteMapping("/deletar/{id}")
-    public String deletarVeiculo(@PathVariable Long id) {
-        deletarVeiculoService.deletarVeiculo(id);
-        return "redirect:/poo1/veiculo/listar";
+    public String deletarVeiculo(@PathVariable Long id, Model model) {
+        try{
+            deletarVeiculoService.deletarVeiculo(id);
+            return "redirect:/poo1/veiculo/listar";
+        }catch (VeiculoComLocacaoException ex){
+            List<Veiculo> veiculos = buscarVeiculoService.buscarTodosVeiculos();
+            model.addAttribute("veiculos", veiculos);
+            model.addAttribute("erroVeiculoComLocacao", ex.getMessage());
+            return "poo1/veiculo/listar";
+        }
+
     }
 }
