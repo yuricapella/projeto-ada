@@ -265,3 +265,68 @@ table tr:hover {
     background-color: #2c3e50;
     border-radius: 5px;
 }
+
+.demo-users {
+    background-color: #f9f9f9;      /* mesmo tom do .form-container */
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.demo-users h3 {
+    margin: 0 0 10px;
+    font-size: 1.2em;
+    color: #2c3e50;                  /* igual aos títulos principais */
+    text-align: center;
+}
+
+.demo-users p {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.users-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 12px;
+}
+
+.user-item code {
+    background: none;
+    padding: 0;
+    border: none;
+}
+
+.users-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.user-item {
+    background-color: #ecf0f1;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.95em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.2s, transform 0.1s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border: none;
+}
+
+.user-item:hover {
+    background-color: #d6eaf8;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.user-item:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}

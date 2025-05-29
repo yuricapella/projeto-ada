@@ -38,8 +38,47 @@
                 </div>
             </form>
         </div>
+        <div class="demo-users">
+            <h3>Usuários de Demonstração</h3>
+            <p>Selecione uma das credenciais abaixo para testar:</p>
+            <div class="users-grid">
+                <button type="button" class="user-item" data-email="joao.silva@email.com" data-senha="senha123">
+                    <code>joao.silva@email.com</code>
+                    <code>senha123</code>
+                </button>
+                <button type="button" class="user-item" data-email="maria.oliveira@email.com" data-senha="senha456">
+                    <code>maria.oliveira@email.com</code>
+                    <code>senha456</code>
+                </button>
+                <button type="button" class="user-item" data-email="pedro.santos@email.com" data-senha="senha789">
+                    <code>pedro.santos@email.com</code>
+                    <code>senha789</code>
+                </button>
+                <button type="button" class="user-item" data-email="ana.rodrigues@email.com" data-senha="senhaabc">
+                    <code>ana.rodrigues@email.com</code>
+                    <code>senhaabc</code>
+                </button>
+                <button type="button" class="user-item" data-email="yuri@yuri.com" data-senha="yuri">
+                    <code>yuri@yuri.com</code>
+                    <code>yuri</code>
+                </button>
+            </div>
+        </div>
     </main>
     <div th:replace="~{fragments/footer :: footer}"></div>
 </div>
+<script>
+    document.querySelectorAll('.user-item').forEach(button => {
+        button.addEventListener('click', () => {
+            const email = button.getAttribute('data-email');
+            const senha = button.getAttribute('data-senha');
+
+            document.getElementById('email').value = email;
+            document.getElementById('senha').value = senha;
+
+            document.querySelector('form').submit();
+        });
+    });
+</script>
 </body>
 </html>
