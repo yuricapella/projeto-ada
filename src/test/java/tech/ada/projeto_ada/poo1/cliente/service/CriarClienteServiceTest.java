@@ -8,19 +8,23 @@ import tech.ada.projeto_ada.poo1.cliente.model.Cliente;
 import tech.ada.projeto_ada.poo1.cliente.repository.ClienteRepository;
 import tech.ada.projeto_ada.poo1.cliente.util.ClienteCreator;
 import tech.ada.projeto_ada.poo1.cliente.util.TestClientPrinter;
+import tech.ada.projeto_ada.usuario.repository.UsuarioRepository;
 import tech.ada.projeto_ada.util.TestPrinter;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class CriarClienteServiceTest {
     CriarClienteService criarClienteService;
     ClienteRepository clienteRepository;
+    UsuarioRepository usuarioRepository;
 
     @BeforeEach
     void setUp(TestInfo testInfo) {
         TestPrinter.printInicioDoTeste(testInfo.getDisplayName());
         clienteRepository = Mockito.mock(ClienteRepository.class);
-        criarClienteService = new CriarClienteService(clienteRepository);
+        usuarioRepository = Mockito.mock(UsuarioRepository.class);
+        criarClienteService = new CriarClienteService(clienteRepository, usuarioRepository);
     }
 
     @Test

@@ -35,7 +35,7 @@ public class ClienteViewController {
 
     @GetMapping("/listar")
     public String listarClientes(Model model) {
-        List<Cliente> clientes = buscarClienteService.buscarTodosClientes();
+        List<Cliente> clientes = buscarClienteService.buscarClienteDoUsuarioLogado();
         model.addAttribute("clientes", clientes);
         return "poo1/cliente/listar";
     }

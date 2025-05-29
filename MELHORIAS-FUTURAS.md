@@ -90,7 +90,7 @@
 * [ ] Filtragem por nome/ID em cliente
 * [ ] Ordenações nas listagens
 * [ ] Paginação de clientes (10, 25, 50)
-* [ ] Atrelar dados ao usuário logado (quando o usuario logar, tudo que ele criar, só ele verá - teria que colocar o id do usuario em cada entidade?)
+* [ ] Atrelar dados ao usuário logado (cliente feito,falta veiculo e locação)
 * [x] Listar usuários demo no HTML (bonus: pode-se clicar para logar automaticamente)
 * [ ] ViaCEP integrado ao cadastro de cliente
 * [ ] Enum para controle de status
@@ -106,3 +106,12 @@
 * [x] Profiles separados para produção/teste
 
 ---
+
+adiciona um botao para criar clientes, veiculos, locações fakes do usuario agora que estão atrelados ao id do usuario.
+caso queira testar na interface.
+
+agora que os clientes estão atrelados por usuarios, os seus ids continuam geral, se eu crio cliente 1 com usuario 1
+se eu logar no usuario 5 e criar o cliente 2, vai aparecer o numero 2, verificar um jeito de resetar id do cliente por usuario.
+
+Ou, melhor seria nao expor o id e fazer a locação por cpf e placa do veiculo por exemplo.
+
