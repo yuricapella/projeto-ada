@@ -15,8 +15,8 @@
             <p>Abaixo estão os clientes cadastrados no sistema.</p>
         </section>
 
-        <div th:if="${erroClienteComLocacoes}" class="error-message">
-            <p th:text="${erroClienteComLocacoes}"></p>
+        <div th:if="${erroClienteComLocacao}" class="error-message">
+            <p th:text="${erroClienteComLocacao}"></p>
         </div>
 
         <div th:if="${#lists.isEmpty(clientes)}" class="error-message">

@@ -90,8 +90,8 @@
 * [ ] Filtragem por nome/ID em cliente
 * [ ] Ordenações nas listagens
 * [ ] Paginação de clientes (10, 25, 50)
-* [ ] Atrelar dados ao usuário logado
-* [ ] Listar usuários disponíveis no HTML
+* [ ] Atrelar dados ao usuário logado (quando o usuario logar, tudo que ele criar, só ele verá - teria que colocar o id do usuario em cada entidade?)
+* [x] Listar usuários demo no HTML (bonus: pode-se clicar para logar automaticamente)
 * [ ] ViaCEP integrado ao cadastro de cliente
 * [ ] Enum para controle de status
 * [ ] Filtrar por status ativo/inativo
@@ -103,6 +103,6 @@
 * [ ] Classes de validação no service
 * [ ] Testes completos e organizados
 * [x] Testes com `@ParameterizedTest` (feito no teste de interface de calcular salarios)
-* [X] Profiles separados para produção/teste
+* [x] Profiles separados para produção/teste
 
 ---

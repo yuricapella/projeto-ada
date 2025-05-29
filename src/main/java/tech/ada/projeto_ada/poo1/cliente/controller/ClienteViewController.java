@@ -87,7 +87,7 @@ public class ClienteViewController {
         } catch (ClienteComLocacaoException ex) {
             List<Cliente> clientes = buscarClienteService.buscarTodosClientes();
             model.addAttribute("clientes", clientes);
-            model.addAttribute("erroClienteComLocacoes", ex.getMessage());
+            model.addAttribute("erroClienteComLocacao", ex.getMessage());
             return "poo1/cliente/listar";
         }
     }

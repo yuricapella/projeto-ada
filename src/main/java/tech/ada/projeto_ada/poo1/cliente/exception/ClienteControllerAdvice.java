@@ -9,8 +9,8 @@ import org.springframework.ui.Model;
 public class ClienteControllerAdvice {
 
     @ExceptionHandler(ClienteComLocacaoException.class)
-    public String handleClienteComLocacoes(ClienteComLocacaoException ex, Model model) {
-        model.addAttribute("erroClienteComLocacoes", ex.getMessage());
+    public String handleClienteComLocacao(ClienteComLocacaoException ex, Model model) {
+        model.addAttribute("erroClienteComLocacao", ex.getMessage());
         return "poo1/cliente/listar";
     }
 }
