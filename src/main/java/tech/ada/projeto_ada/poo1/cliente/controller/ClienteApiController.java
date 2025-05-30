@@ -37,7 +37,7 @@ public class ClienteApiController {
 
     @GetMapping
     public List<ClienteResponseDTO> listarTodos() {
-        return buscarService.buscarTodosClientes()
+        return buscarService.buscarClienteDoUsuarioLogado()
                 .stream()
                 .map(ClienteResponseMapper::toClienteDTO)
                 .toList();
