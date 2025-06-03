@@ -6,9 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import tech.ada.projeto_ada.poo1.veiculo.dto.AtualizarVeiculoRequestDTO;
-import tech.ada.projeto_ada.poo1.veiculo.dto.mapper.CriarVeiculoRequestMapper;
 import tech.ada.projeto_ada.poo1.veiculo.dto.CriarVeiculoRequestDTO;
+import tech.ada.projeto_ada.poo1.veiculo.dto.mapper.CriarVeiculoRequestMapper;
 import tech.ada.projeto_ada.poo1.veiculo.exception.VeiculoComLocacaoException;
+import tech.ada.projeto_ada.poo1.veiculo.exception.VeiculoComPlacaDuplicadaException;
 import tech.ada.projeto_ada.poo1.veiculo.model.Veiculo;
 import tech.ada.projeto_ada.poo1.veiculo.service.AtualizarVeiculoService;
 import tech.ada.projeto_ada.poo1.veiculo.service.BuscarVeiculoService;
@@ -62,8 +63,16 @@ public class VeiculoViewController {
             return "poo1/veiculo/cadastrar";
         }
 
-        Veiculo novoVeiculo = CriarVeiculoRequestMapper.toEntity(dto);
-        criarVeiculoService.criarVeiculo(novoVeiculo);
+        try {
+            Veiculo novoVeiculo = CriarVeiculoRequestMapper.toEntity(dto);
+            criarVeiculoService.criarVeiculo(novoVeiculo);
+        } catch (VeiculoComPlacaDuplicadaException ex) {
+            bindingResult.rejectValue("placa", "error.placaDuplicada", ex.getMessage());
+            model.addAttribute("tiposClasseVeiculo", TipoClasseVeiculo.values());
+            model.addAttribute("tiposVeiculo", TipoVeiculo.values());
+            return "poo1/veiculo/cadastrar";
+        }
+
         return "redirect:/poo1/veiculo/listar";
     }
 

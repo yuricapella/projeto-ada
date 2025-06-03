@@ -13,4 +13,11 @@ public class VeiculoControllerAdvice {
         model.addAttribute("erroVeiculoComLocacao", ex.getMessage());
         return "poo1/veiculo/listar";
     }
+
+    @ExceptionHandler(VeiculoComPlacaDuplicadaException.class)
+    public String handleVeiculoComPlacaDuplicada(VeiculoComPlacaDuplicadaException ex, Model model) {
+        model.addAttribute("erroVeiculoComPlacaDuplicada", ex.getMessage());
+        return "poo1/veiculo/cadastrar";
+    }
+
 }

@@ -3,6 +3,7 @@ package tech.ada.projeto_ada.poo1.veiculo.service;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+import tech.ada.projeto_ada.poo1.veiculo.exception.VeiculoComPlacaDuplicadaException;
 import tech.ada.projeto_ada.poo1.veiculo.model.Veiculo;
 import tech.ada.projeto_ada.poo1.veiculo.repository.VeiculoRepository;
 import tech.ada.projeto_ada.usuario.model.Usuario;
@@ -19,6 +20,9 @@ public class CriarVeiculoService {
     }
 
     public Veiculo criarVeiculo(Veiculo veiculo) {
+        if(repository.findByPlaca(veiculo.getPlaca()).isPresent()) {
+            throw new VeiculoComPlacaDuplicadaException(veiculo.getPlaca());
+        }
         String email = ((UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
         Usuario usuario = usuarioRepository.findByEmail(email).orElseThrow();
         veiculo.setUsuario(usuario);
