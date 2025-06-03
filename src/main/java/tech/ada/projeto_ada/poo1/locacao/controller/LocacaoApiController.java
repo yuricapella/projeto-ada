@@ -38,7 +38,7 @@ public class LocacaoApiController {
 
     @GetMapping
     public List<LocacaoResponseDTO> listarTodasAsLocacoes() {
-        List<Locacao> listaDeLocacoes = buscarLocacaoService.buscarTodasAsLocacoes();
+        List<Locacao> listaDeLocacoes = buscarLocacaoService.buscarLocacaoDoUsuarioLogado();
         return listaDeLocacoes.stream()
                 .map(LocacaoResponseMapper::toDTO)
                 .toList();

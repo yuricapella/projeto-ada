@@ -37,7 +37,7 @@ public class LocacaoViewController {
 
     @GetMapping("/listar")
     public String listarLocacoes(Model model) {
-        List<Locacao> locacoes = buscarLocacaoService.buscarTodasAsLocacoes();
+        List<Locacao> locacoes = buscarLocacaoService.buscarLocacaoDoUsuarioLogado();
         model.addAttribute("locacoes", locacoes);
         model.addAttribute("formatoDataHora", FormataData.PADRAO_DATA_HORA);
         return "poo1/locacao/listar";

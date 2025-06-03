@@ -3,6 +3,7 @@ package tech.ada.projeto_ada.poo1.locacao.model;
 import jakarta.persistence.*;
 import tech.ada.projeto_ada.poo1.cliente.model.Cliente;
 import tech.ada.projeto_ada.poo1.veiculo.model.Veiculo;
+import tech.ada.projeto_ada.usuario.model.Usuario;
 
 import java.time.LocalDateTime;
 
@@ -36,6 +37,10 @@ public class Locacao {
 
     @Column(name = "data_finalizacao")
     private LocalDateTime dataFinalizacao;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "usuario_id", nullable = false)
+    private Usuario usuario;
 
     public Locacao() {
         this.dataCriacao = LocalDateTime.now();
@@ -74,6 +79,18 @@ public class Locacao {
 
     public void setDataAtualizacao(LocalDateTime dataAtualizacao) {
         this.dataAtualizacao = dataAtualizacao;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
 
