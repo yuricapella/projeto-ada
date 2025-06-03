@@ -39,4 +39,8 @@ public class BuscarVeiculoService {
         Usuario usuario = usuarioRepository.findByEmail(email).orElseThrow();
         return veiculoRepository.findByUsuario(usuario);
     }
+
+    public Long obterMaiorId() {
+        return veiculoRepository.findMaxId();
+    }
 }

@@ -14,10 +14,17 @@
             <h2>Bem-vindo ao Sistema de Locação de Veículos</h2>
             <p>Escolha a opção desejada para gerenciar os clientes, veículos e locações.</p>
 
-            <div class="button-group">
-                <a id="btn-cliente" th:href="@{/poo1/cliente/listar}" class="btn">Clientes</a>
-                <a id="btn-veiculo" th:href="@{/poo1/veiculo/listar}" class="btn">Veículos</a>
-                <a id="btn-locacao" th:href="@{/poo1/locacao/listar}" class="btn">Locações</a>
+            <div class="button-wrapper">
+                <form action="/poo1/fake-dados/criar" method="post" th:action="@{/poo1/fake-dados/criar}" th:method="post">
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                    <button type="submit" class="btn btn-primary gerar-btn">Gerar Dados Fake</button>
+                </form>
+
+                <div class="button-group">
+                    <a id="btn-cliente" th:href="@{/poo1/cliente/listar}" class="btn">Clientes</a>
+                    <a id="btn-veiculo" th:href="@{/poo1/veiculo/listar}" class="btn">Veículos</a>
+                    <a id="btn-locacao" th:href="@{/poo1/locacao/listar}" class="btn">Locações</a>
+                </div>
             </div>
         </section>
     </main>

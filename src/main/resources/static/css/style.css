@@ -330,3 +330,16 @@ table tr:hover {
     transform: translateY(2px);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
+
+.button-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.gerar-btn {
+    position: absolute;
+    left: 0;
+}

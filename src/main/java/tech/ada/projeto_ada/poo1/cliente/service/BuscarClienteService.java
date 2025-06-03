@@ -37,4 +37,8 @@ public class BuscarClienteService {
         Usuario usuario = usuarioRepository.findByEmail(email).orElseThrow();
         return clienteRepository.findByUsuario(usuario);
     }
+
+    public Long obterMaiorId() {
+        return clienteRepository.findMaxId();
+    }
 }
