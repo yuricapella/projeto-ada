@@ -90,15 +90,15 @@
 * [ ] Filtragem por nome/ID em cliente
 * [ ] Ordenações nas listagens
 * [ ] Paginação de clientes (10, 25, 50)
-* [ ] Atrelar dados ao usuário logado (cliente feito,falta veiculo e locação)
+* [x] Atrelar dados ao usuário logado
 * [x] Listar usuários demo no HTML (bonus: pode-se clicar para logar automaticamente)
 * [ ] ViaCEP integrado ao cadastro de cliente
 * [ ] Enum para controle de status
 * [ ] Filtrar por status ativo/inativo
 * [ ] Ocultar veículos alugados e locações encerradas
 * [ ] Validações CPF/CNPJ
-* [x] Restrições para exclusão com locações ativas (Para cliente, ao tentar excluir no site, da mensagem de erro)
-* [ ] Tratamento de exceções para placas duplicadas
+* [x] Restrições para exclusão com locações ativas
+* [x] Tratamento de exceções para placas duplicadas
 * [ ] Máscara e validação de telefone
 * [ ] Classes de validação no service
 * [ ] Testes completos e organizados
@@ -115,3 +115,6 @@ se eu logar no usuario 5 e criar o cliente 2, vai aparecer o numero 2, verificar
 
 Ou, melhor seria nao expor o id e fazer a locação por cpf e placa do veiculo por exemplo.
 
+* [x] Botão para criar dados fake atrelados ao usuário logado
+* [ ] Não expor ID na interface para clientes/veículos/locações
+* [ ] Referenciar cliente por CPF e veículo por placa ao criar locação
