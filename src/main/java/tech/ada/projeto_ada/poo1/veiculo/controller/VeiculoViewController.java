@@ -37,7 +37,7 @@ public class VeiculoViewController {
 
     @GetMapping("/listar")
     public String listarVeiculos(Model model) {
-        List<Veiculo> veiculos = buscarVeiculoService.buscarTodosVeiculos();
+        List<Veiculo> veiculos = buscarVeiculoService.buscarVeiculoDoUsuarioLogado();
         model.addAttribute("veiculos", veiculos);
         return "poo1/veiculo/listar";
     }

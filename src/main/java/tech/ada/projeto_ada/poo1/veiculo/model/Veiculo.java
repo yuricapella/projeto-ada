@@ -3,6 +3,7 @@ package tech.ada.projeto_ada.poo1.veiculo.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import tech.ada.projeto_ada.poo1.veiculo.util.TipoVeiculo;
+import tech.ada.projeto_ada.usuario.model.Usuario;
 import tech.ada.projeto_ada.util.FormataData;
 
 import java.time.LocalDateTime;
@@ -28,6 +29,10 @@ public abstract class Veiculo {
 
     @JsonFormat(pattern = FormataData.PADRAO_DATA_HORA)
     private LocalDateTime dataAtualizacao;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "usuario_id", nullable = false)
+    private Usuario usuario;
 
     public Veiculo() {
         this.dataCriacao = LocalDateTime.now();
@@ -105,6 +110,14 @@ public abstract class Veiculo {
 
     public void setDataAtualizacao(LocalDateTime dataAtualizacao) {
         this.dataAtualizacao = dataAtualizacao;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }
 

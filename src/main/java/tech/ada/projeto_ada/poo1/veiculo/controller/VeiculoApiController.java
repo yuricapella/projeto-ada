@@ -39,7 +39,7 @@ public class VeiculoApiController {
 
     @GetMapping
     public List<VeiculoResponseDTO> listarTodosOsVeiculos() {
-        List<Veiculo> listaDeVeiculos = buscarVeiculoService.buscarTodosVeiculos();
+        List<Veiculo> listaDeVeiculos = buscarVeiculoService.buscarVeiculoDoUsuarioLogado();
         return listaDeVeiculos.stream()
                 .map(VeiculoResponseMapper::toDTO)
                 .toList();
