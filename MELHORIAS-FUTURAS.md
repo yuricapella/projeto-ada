@@ -118,3 +118,5 @@ Ou, melhor seria nao expor o id e fazer a locação por cpf e placa do veiculo p
 * [x] Botão para criar dados fake atrelados ao usuário logado
 * [ ] Não expor ID na interface para clientes/veículos/locações
 * [ ] Referenciar cliente por CPF e veículo por placa ao criar locação
+
+Colocar DTO em consumidor e revisar dtos dos outros projetos também.
