@@ -10,11 +10,11 @@ import tech.ada.projeto_ada.usuario.repository.UsuarioRepository;
 
 @Service
 public class CriarConsumidorService {
-    private final ConsumidorRepository repository;
+    private final ConsumidorRepository consumidorRepository;
     private final UsuarioRepository usuarioRepository;
 
-    public CriarConsumidorService(ConsumidorRepository repository, UsuarioRepository usuarioRepository) {
-        this.repository = repository;
+    public CriarConsumidorService(ConsumidorRepository consumidorRepository, UsuarioRepository usuarioRepository) {
+        this.consumidorRepository = consumidorRepository;
         this.usuarioRepository = usuarioRepository;
     }
 
@@ -22,6 +22,6 @@ public class CriarConsumidorService {
         String email = ((UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
         Usuario usuario = usuarioRepository.findByEmail(email).orElseThrow();
         consumidor.setUsuario(usuario);
-        return repository.save(consumidor);
+        return consumidorRepository.save(consumidor);
     }
 }

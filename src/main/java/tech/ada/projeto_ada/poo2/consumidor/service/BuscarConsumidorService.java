@@ -1,9 +1,12 @@
 package tech.ada.projeto_ada.poo2.consumidor.service;
 
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import tech.ada.projeto_ada.poo2.consumidor.exception.ConsumidorNaoEncontradoException;
 import tech.ada.projeto_ada.poo2.consumidor.model.Consumidor;
 import tech.ada.projeto_ada.poo2.consumidor.repository.ConsumidorRepository;
+import tech.ada.projeto_ada.usuario.model.Usuario;
 import tech.ada.projeto_ada.usuario.repository.UsuarioRepository;
 
 import java.util.List;
@@ -28,10 +31,10 @@ public class BuscarConsumidorService {
         return consumidorOptional
                 .orElseThrow(() -> new ConsumidorNaoEncontradoException(id));
     }
-//
-//    public List<Consumidor> buscarConsumidorDoUsuarioLogado() {
-//        String email = ((UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
-//        Usuario usuario = usuarioRepository.findByEmail(email).orElseThrow();
-//        return consumidorRepository.findByUsuario(usuario);
-//    }
+
+    public List<Consumidor> buscarConsumidoresPorUsuarioEAtivo(boolean ativo) {
+        String email = ((UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
+        Usuario usuario = usuarioRepository.findByEmail(email).orElseThrow();
+        return consumidorRepository.findByUsuarioAndAtivo(usuario, ativo);
+    }
 }
